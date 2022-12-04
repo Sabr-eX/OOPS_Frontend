@@ -55,18 +55,18 @@ return (
                   // </div>
 
                   
-  <div class="container">
+  <div className="container" key={productIndex}>
 
-<div class="card mb-3 " >
-  <div class="row g-0">
-    <div class="col-4">
+<div className="card mb-3 " >
+  <div className="row g-0">
+    <div className="col-4">
       <img src={productItem.url}  width="400" height="200"   alt="..."/>
     </div>
-    <div class="col-6">
-      <div class="card-body">
-        <h4 class="card-title">{productItem.name}<br/></h4>
-        <p class="card-text">Rs. {productItem.price}<br/></p>
-        <p class="card-text">
+    <div className="col-6">
+      <div className="card-body">
+        <h4 className="card-title">{productItem.name}<br/></h4>
+        <p className="card-text">Rs. {productItem.price}<br/></p>
+        <p className="card-text">
         {productItem.description}
         {/* <small class="text-muted">Rating: 4.7/5</small> */}
         
@@ -77,11 +77,11 @@ return (
 
       </div>
 
-      <div class='col-2'>
+      <div className='col-2'>
           
-        <button class="btn btn-outline-success mt-5">Add to Wishlist</button> 
+        <button className="btn btn-outline-success mt-5">Add to Wishlist</button> 
 
-        <button class="btn btn-outline-danger position-absolute end-0 bottom-0 translate-middle-x mb-5" onClick={() => addToCart(productItem)}>Add to Cart</button>
+        <button className="btn btn-outline-danger position-absolute end-0 bottom-0 translate-middle-x mb-5" onClick={() => addToCart(productItem)}>Add to Cart</button>
         
 
         </div>

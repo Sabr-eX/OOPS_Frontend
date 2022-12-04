@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 
 
-
-const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]")
-function CartList({ cart }) {
+function CartList() {
+    const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]")
 
     const [CART, setCART] = useState(cartfromlocal)
-
-    useEffect(() => {
-        setCART(cart)
-    }, [cart])
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(CART));

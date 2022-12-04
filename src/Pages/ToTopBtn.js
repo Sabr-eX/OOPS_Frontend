@@ -12,7 +12,7 @@ export default class ToTopBtn extends Component {
     render() {
         return (
             <a href='#'>
-            <button type="button" class="btn btn-success position-fixed bottom-0 end-0 me-2 mb-2">Top</button>    
+            <button type="button" className="btn btn-success position-fixed bottom-0 end-0 me-2 mb-2">Top</button>    
             </a>
             
            

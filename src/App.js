@@ -7,17 +7,17 @@ import Detail from './Pages/Detail'
 
 
 function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<CustomerHome />} />
-      <Route path="/cart" element={<Cart/>} />
-      <Route path="/detail" element={<Detail/>} />
-      </Routes>
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<CustomerHome />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/detail" element={<Detail />} />
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
