@@ -2,7 +2,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomerHome from './Pages/CustomerHome'
 import Cart from './Pages/Cart';
-import ProductDetail from './Pages/ProductDetail'
+import ProductDetail from './Pages/ProductDetail';
+import History from './Pages/History';
+import Payment from './Pages/Payment';
 
 import NotFound from "./components/NotFound";
 import { ToastContainer } from "react-toastify";
@@ -36,6 +38,10 @@ function App() {
                 <Routes>
                     <Route path="/" element={<CustomerHome />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/order_history" element={<History/>}/>
+                    <Route path="/payment" element={<Payment/>}/>
+
+
                     <Route path="/:productId" element={<ProductDetail />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/order/:id" element={<Order />} />

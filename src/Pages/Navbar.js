@@ -18,25 +18,13 @@ export default function Navbar(props) {
         <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
             <div className="container">
-
                 {/* <button className="btn btn-outline-light" type="submit">Button 2</button> */}
-
-
-
                 <Link to='/'>
                     <span className="navbar-brand position-absolute start-0 ms-3 top-0 mt-2 h1 logo">Gada Electronics</span>
                 </Link>
-
-
                 <input type="text" id="search" className="form-control" placeholder="e.g refrigirator" />
 
                 <button id="searchbtn" className="btn btn-primary" type="button">Search</button>
-
-
-
-
-
-
                 <div className="dropdown position-absolute end-0" id="dd">
                     <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Account</button>
 
@@ -44,7 +32,8 @@ export default function Navbar(props) {
                         <li><a className="dropdown-item" href="#">Profile</a></li>
                         <li><a className="dropdown-item" href="#">Wishlist</a></li>
                         <li><a className="dropdown-item" href="#">My Wallet</a></li>
-                        <li><a className="dropdown-item" href="#">Order History</a></li>
+                        <li>
+                            <Link to='/order_history'><a className="dropdown-item">Order History</a></Link></li>
                         <li><hr className="dropdown-divider" /></li>
                         <li><a className="dropdown-item" href="#">Sign Out</a></li>
                     </ul>
@@ -58,13 +47,6 @@ export default function Navbar(props) {
 
 
                 {/* <button type="button" className="btn btn-dark">Account</button> */}
-
-
-
-
-
-
-
 
             </div>
 
