@@ -1,7 +1,7 @@
 import React from "react"
 import {useParams, useLocation} from "react-router-dom"
 import productsData from "./productsData"
-import "./detail.css"
+import "./Detail.css"
 
 function ProductDetail() {
     const {productId} = useParams()

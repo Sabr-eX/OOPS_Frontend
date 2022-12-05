@@ -5,16 +5,11 @@ import Pagination from './Pagination'
 import ToTopBtn from './ToTopBtn'
 import Footer from './Footer'
 import Product from './Product'
-import CartList from './CartList'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-
-
-
-const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]")
-
 export default function CustomerHome() {
+	const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]")
     
     const [product, setProduct] = useState([
         {
@@ -74,8 +69,21 @@ export default function CustomerHome() {
       const [cart, setCart] = useState(cartfromlocal);
       const [showCart, setShowCart] = useState(false)
     
-      const addToCart = async (data) => {
-        setCart([...cart, { ...data, quantity: 1 }])
+      const addToCart = async (data) => {		
+        // Check if the product is already in the cart
+        const isProductInCart = cart.find((item) => item.id === data.id);
+
+        if (isProductInCart) {
+            // If the product is already in the cart, increase the quantity
+            setCart(
+				cart.map((item) =>
+					item.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
+				)
+            );
+        } else {
+            // If the product is not in the cart, add it to the cart
+            setCart([...cart, { ...data, quantity: 1 }]);
+        }
       }
     
       useEffect(() => {
