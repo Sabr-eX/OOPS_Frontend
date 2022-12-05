@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const API_URL = 'https://fakestoreapi.com/products'
 
 const fetchData = async (url) =>{
@@ -9,3 +11,17 @@ export const fetchProducts = (param = "all" ) => {
     if(param === "all") return fetchData(API_URL);
     return fetchData(`${API_URL}/category/${param}`);
 }
+
+
+const SERVER_URL = 'https://gada-electronics.up.railway.app';
+
+export const getProducts = async () => {
+    const response = await axios.get(SERVER_URL + '/products/all');
+    if (response.status === 200) {
+        return response.data;
+    } else {
+        return null;
+    }
+
+}
+
