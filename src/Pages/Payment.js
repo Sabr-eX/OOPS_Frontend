@@ -33,7 +33,7 @@ for(var i=0;i<total.length;i++)
                 <MDBInput label='Address' type='text' className="mb-4" />
                 <MDBInput label='Email' type='text' className="mb-4" />
                 <MDBInput label='Phone' type='text' className="mb-4" />
-                <MDBTextArea label='Additional information' rows={4} className="mb-4" />
+                {/* <MDBTextArea label='Additional information' rows={4} className="mb-4" /> */}
 
                 
               </form>
