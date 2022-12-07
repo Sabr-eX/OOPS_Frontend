@@ -19,7 +19,7 @@ export default function Navbar(props) {
 
             <div className="container">
                 {/* <button className="btn btn-outline-light" type="submit">Button 2</button> */}
-                <Link to='/'>
+                <Link to='/CustomerHome'>
                     <span className="navbar-brand position-absolute start-0 ms-3 top-0 mt-2 h1 logo">Shopify</span>
                 </Link>
                 <input type="text" id="search" className="form-control" placeholder="e.g refrigirator" />

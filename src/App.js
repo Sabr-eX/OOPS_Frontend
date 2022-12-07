@@ -42,7 +42,7 @@ function App() {
             {/* <NavBar /> */}
                 <Routes>
                     <Route path="/CustomerHome" element={<CustomerHome />} />
-                    <Route path ="/" element={<Auth/>} />
+                    <Route path ="/" element={<User/>} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/order_history" element={<History/>}/>
                     <Route path="/payment" element={<Payment/>}/>
