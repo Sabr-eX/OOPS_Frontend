@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import {addToCart} from './CustomerHome'
 
-function WishlistList() {
+function WishlistList({ product, addToCart}) {
   const wishlistfromlocal = JSON.parse(
     localStorage.getItem("wishlist") || "[]"
   );
+  
 
   const [WISHLIST, setWISHLIST] = useState(wishlistfromlocal);
 
@@ -30,28 +32,11 @@ function WishlistList() {
                 <span className="mt-5"> {wishlistItem.name} </span>
               </div>
 
-              {/* <div className="col-1"> */}
-              {/* <button
-                  class="btn btn-danger me-1"
-                  onClick={() => {
-                    const _WISHLIST = WISHLIST.map((item, index) => {
-                      return wishlistindex === index
-                        ? {
-                            ...item,
-                            quantity: item.quantity > 0 ? item.quantity - 1 : 0,
-                          }
-                        : item;
-                    });
-                    setWISHLIST(_WISHLIST);
-                    // localStorage.setItem("wishlist", JSON.stringify(wishlist));
-                  }}
-                >
-                  -
-                </button>
+              
 
-                <span> {wishlistItem.quantity} </span>
+                {/* <span> {wishlistItem.quantity} </span> */}
 
-                <button
+                {/* <button
                   class="btn btn-success ms-1"
                   onClick={() => {
                     const _WISHLIST = WISHLIST.map((item, index) => {
@@ -65,10 +50,18 @@ function WishlistList() {
                 >
                   +
                 </button> */}
-              {/* </div> */}
+              
+              
               <div className="col-1">
                 <span> Rs. {wishlistItem.price} </span>
               </div>
+              <div className="col-1">
+              <button
+                    className="btn btn-outline-danger cart_btn"
+                    onClick={() => addToCart(product)}>
+                    Add to Cart
+                  </button>
+            </div>
             </div>
           </div>
         );
