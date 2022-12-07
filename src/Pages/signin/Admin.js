@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect, useContext } from "react"
 import './Admin.css'
 import axios from "axios"
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 export default function () {
+const navigate = useNavigate();
+
     let [authMode, setAuthMode] = useState("signin")
     let [email,setSignInEmail]= useState("")
   let [password,setSigninpwd] = useState("")
@@ -46,6 +48,13 @@ let result3 = await fetch("https://gada-electronics.up.railway.app/users/signin"
 })
 result3 = await result3.json()
 localStorage.setItem("user-info",JSON.stringify(result3))
+if(!result3.role.localeCompare("ADMIN"))
+{
+ navigate('/admin');
+}
+else{
+  window.alert("sometext");
+}
 } 
 
 

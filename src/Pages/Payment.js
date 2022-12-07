@@ -86,7 +86,7 @@ export default function Basic() {
                   {/* <span><strong>Available Balance</strong></span> */}
                 </MDBListGroupItem>
               </MDBListGroup>
-              <button>Confirm Order</button>
+              <button className='btn btn-primary'>Confirm Order</button>
               
             </MDBCardBody>
           </MDBCard>

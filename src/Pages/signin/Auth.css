@@ -73,5 +73,10 @@ a:click{
   margin-top: 5vh;
 }
 
-  
+.title{
+  margin-left: 42vw !important;
+  margin-top: 2vh !important;
+  color: red;
+  font-size:xx-large;
+} 
 

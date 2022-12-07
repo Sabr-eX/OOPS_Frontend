@@ -37,7 +37,8 @@ export default function Navbar(props) {
                         <li>
                             <Link to='/order_history'><a className="dropdown-item">Order History</a></Link></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#">Sign Out</a></li>
+                        <li>
+                            <Link to='/'><a className="dropdown-item">Sign Out</a></Link></li>
                     </ul>
 
 

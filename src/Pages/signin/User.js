@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect, useContext } from "react"
 import './Admin.css'
 import axios from "axios"
 import { Link } from "react-router-dom";
+import {useNavigate} from 'react-router-dom'
 
 export default function () {
+  const navigate =useNavigate();
     let [authMode, setAuthMode] = useState("signin")
     let [email,setSignInEmail]= useState("")
   let [password,setSigninpwd] = useState("")
@@ -46,6 +48,13 @@ let result = await fetch("https://gada-electronics.up.railway.app/users/signin",
 })
 result = await result.json()
 localStorage.setItem("user-info",JSON.stringify(result))
+if(!result.role.localeCompare("CUSTOMER"))
+{
+ navigate('/CustomerHome');
+}
+else{
+  window.prompt("sometext","defaultText");
+}
 }
 
 return (
@@ -89,10 +98,10 @@ return (
 
           } */}
           <div className="d-grid gap-2 mt-3">
-           <Link to='/CustomerHome'><button type="submit"  className="btn btn-danger">
+           <button onClick={signin} type="submit" className="btn btn-danger">
               Submit
             </button>
-            </Link>
+            
             </div>
             <div className="d-grid gap-2 mt-3">
             <Link to='/adminsignin'><button  className="btn btn-danger">

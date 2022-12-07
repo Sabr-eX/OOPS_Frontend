@@ -119,7 +119,7 @@ export default function () {
   return (
 
     <div className="Auth-form-container">
-      <h3 className="position-absolute start-0 top-0 ms-1">Name</h3>
+      <h3 className="position-absolute start-0 top-0 ms-1 title">Welcome to Shopify!</h3>
       <form className="Auth-form">
 
         <div className="Auth-form-content">
@@ -186,15 +186,22 @@ export default function () {
             </Link>
             
           </div>
-          <div className="d-grid gap-2 mt-3">
-              <Link to='/adminsignin'><button  className="btn btn-danger">
-                Login as Admin
+          <div className="d-grid gap-1 mt-3">
+             <div className="row">
+             <div className="col-6">
+              <Link to='/adminsignin'>
+              <button  className="btn btn-danger">
+                Admin Login
               </button>
               </Link>
+              </div>
+              <div className="col-6">
               <Link to='/manager'><button formAction="/manager" className="btn btn-danger">
-                Login as Manager
+                Manager Login
               </button>
               </Link>
+              </div>
+              </div>
               </div>
 
         </div>
