@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function Profilepagecomponent() {
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
-  
+
   const [editOn, setEditOn] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,8 +21,10 @@ export default function Profilepagecomponent() {
     setEditOn(!editOn);
 
     const response = await axios.post(".railway.app/users/" + userInfo.id, {
-        name, password, phone
-    })
+      name,
+      password,
+      phone,
+    });
   };
 
   return (
@@ -35,52 +37,52 @@ export default function Profilepagecomponent() {
       <form>
         <div className="form-group cent">
           <div className="row">
-            <div className="col-2">
-              <input
-                className="form-control textbox"
-                id="name"
-                name="name"
-                value={name}
-                placeholder="Name"
-                disabled={editOn}
-                onChange={(event) => {
-                  setName(event.target.value);
-                }}
-              />
-            </div>
+            {/* <div className="col-2"> */}
+            <input
+              className="form-control textbox"
+              id="name"
+              name="name"
+              value={name}
+              placeholder="Name"
+              disabled={editOn}
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
+            {/* </div> */}
           </div>
 
           <div className="row">
-            <div className="col-4">
-              <input
-                className="form-control textbox"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Email id"
-                disabled={true}
-              />
-            </div>
+            {/* <div className="col-4"> */}
+            <input
+              className="form-control textbox"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Email id"
+              disabled={true}
+            />
+            {/* </div> */}
           </div>
 
           <div className="row">
-            <div className="col-4">
-              <input
-                className="form-control textbox"
-                id="password"
-                placeholder="password"
-                value={password}
-                onChange={(event) => {
-                  setPassword(event.target.value);
-                }}
-                disabled={editOn}
-              />
-            </div>
+            {/* <div className="col-4"> */}
+            <input
+              className="form-control textbox"
+              id="password"
+              placeholder="password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+              disabled={editOn}
+            />
+            {/* </div> */}
           </div>
 
           <div className="row">
-            <div className="col-1">
-              {/* <div className="dropdown" id="gender" disabled={editOn}>
+            {/* <div className="col-1"> */}
+            {/* <div className="dropdown" id="gender" disabled={editOn}>
                 <button
                   className="btn btn-outline-dark dropdown-toggle"
                   type="button"
@@ -109,20 +111,20 @@ export default function Profilepagecomponent() {
                   </li>
                 </ul>
               </div> */}
-            </div>
+            {/* </div> */}
 
-            <div className="col-4">
-              <input
-                className="form-control textbox"
-                id="phone"
-                placeholder="Phone No"
-                value={phone}
-                onChange={(event) => {
-                  setPhone(event.target.value);
-                }}
-                disabled={editOn}
-              />
-            </div>
+            {/* <div className="col-4"> */}
+            <input
+              className="form-control textbox"
+              id="phone"
+              placeholder="Phone No"
+              value={phone}
+              onChange={(event) => {
+                setPhone(event.target.value);
+              }}
+              disabled={editOn}
+            />
+            {/* </div> */}
           </div>
 
           {/* <div className="row">
