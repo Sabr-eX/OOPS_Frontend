@@ -17,11 +17,12 @@ const SERVER_URL = 'https://gada-electronics.up.railway.app';
 
 export const getProducts = async () => {
     const response = await axios.get(SERVER_URL + '/products/all');
+
+    console.log(response.data);
     if (response.status === 200) {
         return response.data;
     } else {
         return null;
     }
-
 }
 

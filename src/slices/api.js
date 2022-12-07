@@ -1,4 +1,4 @@
-export const url = "http://localhost:5000/api";
+export const url = "https://gada-electronics.up.railway.app";
 
 export const setHeaders = () => {
   const headers = {

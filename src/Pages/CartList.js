@@ -23,7 +23,7 @@ function CartList() {
                             <div className='row mt-3'>
                                 <div className='col-2' />
                                 <div className='col-2'>
-                                    <img src={cartItem.url} width={120} />
+                                    <img src={cartItem.image} width={120} />
                                 </div>
 
                                 <div className='col-2'>
@@ -86,7 +86,7 @@ function CartList() {
                 <div className='col-2' />
                 <div className='col-2'>
                     <div className='payment'>
-                        <Link to ='/payment'>
+                        <Link to='/payment'>
                             <button onClick={() => {
 
                             }} className='btn btn-primary'>Proceed to Payment</button>

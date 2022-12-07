@@ -5,44 +5,54 @@ import Cart from './Pages/Cart';
 import ProductDetail from './Pages/ProductDetail';
 import History from './Pages/History';
 import Payment from './Pages/Payment';
+import Wishlist from './Pages/Wishlist';
 
 import NotFound from "./components/NotFound";
 import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loadUser } from "./slices/authSlice";
-import Dashboard from "./components/admin/Dashboard";
-import Products from "./components/admin/Products";
-import Users from "./components/admin/Users";
-import Orders from "./components/admin/Orders";
-import Summary from "./components/admin/Summary";
-import CreateProduct from "./components/admin/CreateProduct";
-import ProductsList from "./components/admin/list/ProductsList";
-import Product from "./components/Details/Product";
-import Order from "./components/Details/Order";
-import UserProfile from "./components/Details/UserProfile";
-import NavBar from './Pages/Navbar';
-
+// import { useDispatch } from "react-redux";
+// import { loadUser } from "./slices/authSlice";
+// import Dashboard from "./components/admin/Dashboard";
+// import Products from "./components/admin/Products";
+// import Users from "./components/admin/Users";
+// import Orders from "./components/admin/Orders";
+// import Summary from "./components/admin/Summary";
+// import CreateProduct from "./components/admin/CreateProduct";
+// import ProductsList from "./components/admin/list/ProductsList";
+// import Product from "./components/Details/Product";
+// import Order from "./components/Details/Order";
+// import UserProfile from "./components/Details/UserProfile";
+// import NavBar from './Pages/Navbar';
+import Auth from './Pages/signin/Auth';
+import Admin from './Pages/signin/Admin';
+import Manager from './Pages/signin/Manager';
+import User from './Pages/signin/User';
 
 function App() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
   
-    useEffect(() => {
-      dispatch(loadUser(null));
-    }, [dispatch]);
+    // useEffect(() => {
+    //   dispatch(loadUser(null));
+    // }, [dispatch]);
     return (
         <div className="App">
             <BrowserRouter>
             <ToastContainer />
-            <NavBar />
+            {/* <NavBar /> */}
                 <Routes>
                     <Route path="/" element={<CustomerHome />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/order_history" element={<History/>}/>
                     <Route path="/payment" element={<Payment/>}/>
+                    <Route path="/wishlist" element={<Wishlist/>}/>
+
+                    <Route path="/auth" element={ <div><Auth /></div>} />
+                    <Route path="/adminsignin" element={<div><Admin /></div>}/>
+                    <Route path="/manager" element={<div><Manager /></div>}/> 
+                    <Route path="/user" element={<div><User /></div>}/>
 
 
-                    <Route path="/:productId" element={<ProductDetail />} />
+                    {/* <Route path="/:productId" element={<ProductDetail />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/order/:id" element={<Order />} />
                     <Route path="/user/:id" element={<UserProfile />} />
@@ -55,7 +65,7 @@ function App() {
                         <Route path="users" element={<Users />} />
                         <Route path="orders" element={<Orders />} />
                     </Route>
-                    <Route path="*" element={<NotFound />} />
+                    <Route path="*" element={<NotFound />} /> */}
                 </Routes>
             </BrowserRouter>
         </div>

@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBCol, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
+import axios from 'axios';
 
 export default function Basic() {
-  
-const total = JSON.parse(localStorage.getItem("cart") || "[]");
-let totalValue=0;
-for(var i=0;i<total.length;i++)
-{   
-    const item=total[i];
-    totalValue = totalValue + (item.quantity)*(item.price);
+
+  const total = JSON.parse(localStorage.getItem("cart") || "[]");
+  let totalValue = 0;
+  for (var i = 0; i < total.length; i++) {
+    const item = total[i];
+    totalValue = totalValue + (item.quantity) * (item.price);
     console.log(totalValue);
+  }
+
+  useEffect(() => {
+    axios.get('https://fakestoreapi.com/products')
+      .then(res => {
+        console.log("getting from " + res.data)
+      }).catch(err => console.log(err))
+  }, [])
+
+  const postData = (e) => {
+    e.preventDefault();
+    axios.post('https://fakestoreapi.com/products',{
+  }).then(res => res.json()).then(res => console.log(res)).catch(err=> console.log(err))
 }
-  
-    return (
+
+
+  return (
     <div className="mx-auto mt-5" style={{ maxWidth: '900px' }}>
       <MDBRow>
         <MDBCol md="8" className="mb-4">
@@ -35,7 +49,7 @@ for(var i=0;i<total.length;i++)
                 <MDBInput label='Phone' type='text' className="mb-4" />
                 {/* <MDBTextArea label='Additional information' rows={4} className="mb-4" /> */}
 
-                
+
               </form>
             </MDBCardBody>
           </MDBCard>
@@ -49,7 +63,7 @@ for(var i=0;i<total.length;i++)
               <MDBListGroup flush>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Total Amount
-                  <span>{totalValue }</span>
+                  <span>{totalValue}</span>
                 </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                   <div>
