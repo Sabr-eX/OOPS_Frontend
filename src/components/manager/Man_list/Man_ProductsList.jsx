@@ -6,7 +6,7 @@ import axios from "axios";
 // import EditProduct from "../EditProduct";
 
 
-export default function ProductsList() {
+export default function Man_ProductsList() {
 
 const [product, setProduct] = useState();
 
