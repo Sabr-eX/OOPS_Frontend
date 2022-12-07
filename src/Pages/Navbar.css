@@ -1,19 +1,19 @@
 #search{
-    margin-left: 8vw !important;
+    /* margin-left: 8vw !important; */
     width: 35vw !important;
     /* margin-right: 1vw !important; */
 }
 
 #searchbtn{
-    margin-left: 56vw !important;
     position: absolute;
+    width: 5vw !important;
 
     
 }
 
 
 #dd{
-    margin-right: 110px !important;
+    margin-right: 115px !important;
 }
 
 .logo{

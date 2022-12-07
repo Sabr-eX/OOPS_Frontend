@@ -59,12 +59,12 @@ else{
 
 return (
     <div className="Auth-form-container">
-      <h3 className="position-absolute start-0 top-0 ms-1">Name</h3>
+      <h3 className="position-absolute start-0 top-0 title">Welcome to Shopify!</h3>
       <form className="Auth-form" >
         <div className="Auth-form-content">
           <h3 className="Auth-form-title" >User Sign In</h3>
           <div className="text-center text-white">
-            <label>Not registered yet? {" "}</label>
+            <label className="me-1">Not registered yet?</label>
             <Link to='/auth'>
             <span className="link-primary">
               Sign Up

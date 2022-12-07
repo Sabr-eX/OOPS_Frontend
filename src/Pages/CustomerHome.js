@@ -117,6 +117,7 @@ export default function CustomerHome() {
         handleShow={handleShow}></Navbar>
       <br />
       <div>
+        
         <Carousel />
         <br />
         <br />
