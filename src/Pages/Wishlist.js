@@ -8,7 +8,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
-  const [product, setProduct] = useState();
   const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]");
   const [cart, setCart] = useState(cartfromlocal);
 
@@ -31,6 +30,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
   return (
     <div className="App">
       <Navbar />
@@ -40,11 +40,7 @@ function App() {
         <br />
         <br />
         <br />
-        <WishlistList
-        product={product}
-        addToCart={addToCart}>
-        </WishlistList>
-        
+        <WishlistList addToCart={addToCart}></WishlistList>
       </div>
       <Footer />
     </div>

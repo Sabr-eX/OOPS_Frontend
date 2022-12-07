@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
-import {addToCart} from './CustomerHome'
 
-function WishlistList({ product, addToCart}) {
+function WishlistList({ addToCart }) {
   const wishlistfromlocal = JSON.parse(
     localStorage.getItem("wishlist") || "[]"
   );
-  
 
   const [WISHLIST, setWISHLIST] = useState(wishlistfromlocal);
 
@@ -32,11 +29,9 @@ function WishlistList({ product, addToCart}) {
                 <span className="mt-5"> {wishlistItem.name} </span>
               </div>
 
-              
+              {/* <span> {wishlistItem.quantity} </span> */}
 
-                {/* <span> {wishlistItem.quantity} </span> */}
-
-                {/* <button
+              {/* <button
                   class="btn btn-success ms-1"
                   onClick={() => {
                     const _WISHLIST = WISHLIST.map((item, index) => {
@@ -50,18 +45,18 @@ function WishlistList({ product, addToCart}) {
                 >
                   +
                 </button> */}
-              
-              
+
               <div className="col-1">
                 <span> Rs. {wishlistItem.price} </span>
               </div>
               <div className="col-1">
-              <button
-                    className="btn btn-outline-danger cart_btn"
-                    onClick={() => addToCart(product)}>
-                    Add to Cart
-                  </button>
-            </div>
+                <button
+                  className="btn btn-outline-danger cart_btn"
+                  onClick={() => addToCart(wishlistItem)}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         );
