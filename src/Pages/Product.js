@@ -29,7 +29,11 @@ export default function Product({ product, addToCart, addToWishlist }) {
                       </h4>
                     </div>
                     <p className="card-text mt-3">
-                      Rs. {product.price}
+                      ₹
+                      {product.price - (product.price * product.discount) / 100}
+                      <small className="ms-2">
+                        <s>₹{product.price} </s>
+                      </small>
                       <br />
                     </p>
                     <p className="card-text mt-3">

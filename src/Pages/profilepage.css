@@ -1,22 +1,32 @@
-.userptext{
+.userptext {
 
     color: black;
-    text-align: left;
-    margin-left: 3vw !important;
+    /* text-align: left; */
+    /* margin-left: 3vw !important; */
     margin-top: 10px !important;
+
 
 }
 
-.textbox{
+.line {
+    margin-left: 10vw !important;
+}
+
+.textbox {
     width: 32vw;
     /* margin-left: 33vw !important; */
     margin-top: 10px !important;
     margin-bottom: 10px !important;
-    
-    
+
+
 }
 
 
+label {
+    margin-top: 18px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: large !important;
+}
 
 
 /* #gender{
@@ -26,8 +36,8 @@
     /* margin-left: 33vw !important; 
 } */
 
-.cent{
-    margin-left: 35vw;
+.cent {
+    margin-left: 29vw;
     align-self: center !important;
 
 }

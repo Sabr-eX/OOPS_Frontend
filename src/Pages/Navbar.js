@@ -6,7 +6,7 @@ import "./Navbar.css";
 // import {ButtonContainer} from './Button';
 import { Link } from "react-router-dom";
 
-export default function Navbar(props) {
+export default function Navbar({ count, handleShow, product, addToCart }) {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -77,7 +77,7 @@ export default function Navbar(props) {
         </div>
         <Link to="/cart">
           <button className="btn btn-outline-warning position-absolute top-0 mt-2 end-0 me-5 ">
-            Cart <sup>{props.count}</sup>
+            Cart <sup>{count}</sup>
           </button>
         </Link>
 
