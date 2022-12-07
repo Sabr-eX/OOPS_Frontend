@@ -132,7 +132,7 @@ export default function CustomerHome() {
         <br />
         <br />
         <br />
-        <Pagination />
+        {/* <Pagination /> */}
       </div>
       <Footer />
 

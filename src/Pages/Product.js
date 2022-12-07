@@ -8,7 +8,6 @@ export default function Product({ product, addToCart }) {
 
 
 
-
   return (
     <div className='flex'>
       {
