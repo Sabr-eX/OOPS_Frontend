@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component }from 'react'
 import "./Navbar.css"
 // import {Link} from 'react-router-dom';
 // import logo from '../logo.svg';
@@ -29,8 +29,10 @@ export default function Navbar(props) {
                     <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Account</button>
 
                     <ul className="dropdown-menu dropdown-menu-dark">
-                        <li><a className="dropdown-item" href="#">Profile</a></li>
-                        <li><a className="dropdown-item" href="#">Wishlist</a></li>
+                        <li>
+                            <Link to='/profile'>   <a className="dropdown-item">Profile</a> </Link> </li>
+                        <li>
+                            <Link to ='/wishlist'><a className="dropdown-item" href="#">Wishlist</a> </Link> </li>
                         <li><a className="dropdown-item" href="#">My Wallet</a></li>
                         <li>
                             <Link to='/order_history'><a className="dropdown-item">Order History</a></Link></li>

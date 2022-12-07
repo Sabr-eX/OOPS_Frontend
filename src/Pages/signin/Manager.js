@@ -20,8 +20,7 @@ export default function (props) {
   function PwdIsValid(){
     return true;
   }
-  async function signin (e){
-    e.preventDefault();
+  async function signin (){
     let item = {email,password}
     console.warn(item)
     let result3 = await fetch("https://gada-electronics.up.railway.app/users/signin",{

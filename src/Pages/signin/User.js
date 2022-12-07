@@ -89,9 +89,10 @@ return (
 
           } */}
           <div className="d-grid gap-2 mt-3">
-            <button type="submit"  onClick= {signin} className="btn btn-danger">
+           <Link to='/CustomerHome'><button type="submit"  className="btn btn-danger">
               Submit
             </button>
+            </Link>
             </div>
             <div className="d-grid gap-2 mt-3">
             <Link to='/adminsignin'><button  className="btn btn-danger">

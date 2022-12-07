@@ -1,5 +1,3 @@
-
-
 import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 import React, { useRef, useState, useEffect, useContext } from "react"
 import './Auth.css'
@@ -10,7 +8,7 @@ import {useHistory} from 'react-router-dom'
 
 export default function () {
   const userRef = useRef();
-    const errRef = useRef();
+  const errRef = useRef();
   let [authMode, setAuthMode] = useState("signin")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -47,8 +45,8 @@ export default function () {
     return true;
   }
 
-         async function  signup(e){
-          e.preventDefault();
+         async function  signup(){
+          
          let item = {name,email,password,phone}
          console.warn(item)
         //  axios.post('https://gada-electronics.up.railway.app/users/signup',{
@@ -181,9 +179,11 @@ export default function () {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
+            <Link to ='/user'>
             <button onClick={signup} className="btn btn-danger">
               Submit
             </button>
+            </Link>
             
           </div>
           <div className="d-grid gap-2 mt-3">

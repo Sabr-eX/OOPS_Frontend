@@ -6,6 +6,7 @@ import ProductDetail from './Pages/ProductDetail';
 import History from './Pages/History';
 import Payment from './Pages/Payment';
 import Wishlist from './Pages/Wishlist';
+import Profilepagecomponent from './Pages/profilepage';
 
 import NotFound from "./components/NotFound";
 import { ToastContainer } from "react-toastify";
@@ -40,11 +41,14 @@ function App() {
             <ToastContainer />
             {/* <NavBar /> */}
                 <Routes>
-                    <Route path="/" element={<CustomerHome />} />
+                    <Route path="/CustomerHome" element={<CustomerHome />} />
+                    <Route path ="/" element={<Auth/>} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/order_history" element={<History/>}/>
                     <Route path="/payment" element={<Payment/>}/>
                     <Route path="/wishlist" element={<Wishlist/>}/>
+                    <Route path="/profile" element={<Profilepagecomponent/>}/>
+
 
                     <Route path="/auth" element={ <div><Auth /></div>} />
                     <Route path="/adminsignin" element={<div><Admin /></div>}/>

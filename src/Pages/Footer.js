@@ -11,7 +11,7 @@ export default class Footer extends Component  {
   <footer className="py-5">
     <div className="row">
       <div className="col-2">
-        <h5 className="text-light">Section</h5>
+        <h5 className="text-dark">Section</h5>
         <ul className="nav flex-column">
           <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-light">Home</a></li>
           <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-light">Features</a></li>
