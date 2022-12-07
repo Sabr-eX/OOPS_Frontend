@@ -26,8 +26,8 @@ export default function Product({ product, addToCart }) {
                       <div key={product.id}>
                         <h4 className="card-title">
                           <Link to={`/${product.id}`}>{product.name}</Link><br /></h4></div>
-                      <p className="card-text">Rs. {product.price}<br /></p>
-                      <p className="card-text">
+                      <p className="card-text mt-3">Rs. {product.price}<br /></p>
+                      <p className="card-text mt-3">
                         {product.description}
                         {/* <small class="text-muted">Rating: 4.7/5</small> */}
 
