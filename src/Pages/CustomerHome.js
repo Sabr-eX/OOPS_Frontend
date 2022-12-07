@@ -1,16 +1,19 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Carousel from './Carousel'
-import Pagination from './Pagination'
-import ToTopBtn from './ToTopBtn'
-import Footer from './Footer'
-import Product from './Product'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axios from 'axios'
+import React from "react";
+import Navbar from "./Navbar";
+import Carousel from "./Carousel";
+import Pagination from "./Pagination";
+import ToTopBtn from "./ToTopBtn";
+import Footer from "./Footer";
+import Product from "./Product";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function CustomerHome() {
-  const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]")
+  const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]");
+  const wishlistfromlocal = JSON.parse(
+    localStorage.getItem("wishlist") || "[]"
+  );
 
   // const [product, setProduct] = useState(
   //   [
@@ -74,14 +77,18 @@ export default function CustomerHome() {
 
   useEffect(() => {
     const getProducts = async () => {
-      await axios.get('https://gada-electronics.up.railway.app/products/all')
-        .then((res) => { setProduct(res?.data); });
-    }
+      await axios
+        .get("https://gada-electronics.up.railway.app/products/all")
+        .then((res) => {
+          setProduct(res?.data);
+        });
+    };
     getProducts();
-  }, [])
+  }, []);
 
   const [cart, setCart] = useState(cartfromlocal);
-  const [showCart, setShowCart] = useState(false)
+  const [wishlist, setWishlist] = useState(wishlistfromlocal);
+  const [showCart, setShowCart] = useState(false);
 
   const addToCart = async (data) => {
     // Check if the product is already in the cart
@@ -98,32 +105,44 @@ export default function CustomerHome() {
       // If the product is not in the cart, add it to the cart
       setCart([...cart, { ...data, quantity: 1 }]);
     }
-  }
+  };
+
+  const addToWishlist = async (data) => {
+    // Check if the product is already in the cart
+    const isProductInWishlist = wishlist.find((item) => item.id === data.id);
+
+    if (!isProductInWishlist) {
+      setWishlist([...wishlist, { ...data, quantity: 1 }]);
+    }
+  };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart])
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   const handleShow = (value) => {
-    setShowCart(value)
-  }
-
-
-
+    setShowCart(value);
+  };
 
   return (
     <div>
-      <Navbar count={cart.length}
-        handleShow={handleShow}></Navbar>
+      <Navbar count={cart.length} handleShow={handleShow}></Navbar>
       <br />
       <div>
-        
         <Carousel />
         <br />
         <br />
         <br />
         <br />
-        <Product product={product} addToCart={addToCart} ></Product>
+        <Product
+          product={product}
+          addToCart={addToCart}
+          addToWishlist={addToWishlist}
+        ></Product>
         <ToTopBtn />
         <br />
         <br />
@@ -136,9 +155,6 @@ export default function CustomerHome() {
         {/* <Pagination /> */}
       </div>
       <Footer />
-
-
-
     </div>
-  )
+  );
 }

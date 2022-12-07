@@ -1,14 +1,25 @@
-import React from 'react'
-import '../App.css';
-import CartList from './CartList';
-import Navbar from './Navbar';
+import "./App.css";
+import React from "react";
+import Navbar from "./Navbar";
+import WishlistList from "./WishlistList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "./Footer.js";
 
-export default function Wishlist() {
+function App() {
   return (
-    <div>
-        <Navbar/>
-        <CartList />
-
+    <div className="App">
+      <Navbar />
+      <br />
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <WishlistList />
+      </div>
+      <Footer />
     </div>
-  )
+  );
 }
+
+export default App;
