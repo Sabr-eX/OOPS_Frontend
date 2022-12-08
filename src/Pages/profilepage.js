@@ -48,7 +48,7 @@ export default function Profilepagecomponent() {
   };
 
   return (
-    <div>
+    <div className="pic">
       <br />
       <p className="h1 userptext ">User Profile</p>
       <hr className="mb-5 mt-3 line" width="80%" />

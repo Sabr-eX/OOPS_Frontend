@@ -46,34 +46,22 @@ export default class Footer extends Component {
             <h5 className="text-light">About</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  Ansh Goyal
-                </a>
+                <a className="nav-link p-0 text-light">Ansh Goyal</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  Gaurav Somai
-                </a>
+                <a className="nav-link p-0 text-light">Gaurav Somai</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  Harsh Rachalwar
-                </a>
+                <a className="nav-link p-0 text-light">Harsh Rachalwar</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  Kumarasamy Chelliah
-                </a>
+                <a className="nav-link p-0 text-light">Kumarasamy Chelliah</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  Kush Agrawal
-                </a>
+                <a className="nav-link p-0 text-light">Kush Agrawal</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  Manan Gupta
-                </a>
+                <a className="nav-link p-0 text-light">Manan Gupta</a>
               </li>
             </ul>
           </div>
@@ -82,34 +70,22 @@ export default class Footer extends Component {
             <h5 className="text-light">Contact Us</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  +91 9427458974
-                </a>
+                <a className="nav-link p-0 text-light">+91 9427458974</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  +91 9427458974
-                </a>
+                <a className="nav-link p-0 text-light">+91 9427458974</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  +91 9427458974
-                </a>
+                <a className="nav-link p-0 text-light">+91 9427458974</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  +91 9427458974
-                </a>
+                <a className="nav-link p-0 text-light">+91 9427458974</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  +91 9427458974
-                </a>
+                <a className="nav-link p-0 text-light">+91 9427458974</a>
               </li>
               <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-light">
-                  +91 9427458974
-                </a>
+                <a className="nav-link p-0 text-light">+91 9427458974</a>
               </li>
             </ul>
           </div>
@@ -140,17 +116,17 @@ export default class Footer extends Component {
 
         {/* <div className="d-flex justify-content-between py-4 my-4 border-top">
       <ul className="list-unstyled d-flex">
-        <li className="ms-3"><a className="link-light" href="#"><svg className="bi" width="24" height="24"><use href="#twitter"></use></svg></a></li>
-        <li className="ms-3"><a className="link-dark" href="#"><svg className="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
-        <li className="ms-3"><a className="link-dark" href="#"><svg className="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
+        <li className="ms-3"><a className="link-light"><svg className="bi" width="24" height="24"><use href="#twitter"></use></svg></a></li>
+        <li className="ms-3"><a className="link-dark"><svg className="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
+        <li className="ms-3"><a className="link-dark"><svg className="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
       </ul>
     </div> */}
 
         {/* <div className="d-flex justify-content-between py-4 my-4 border-top">
       <ul className="list-unstyled d-flex">
-        <li className="ms-3"><a className="link-light" href="#"><svg className="bi" width="24" height="24"><use xlinkHref="#twitter"></use></svg></a></li>
-        <li className="ms-3"><a className="link-light" href="#"><svg className="bi" width="24" height="24"><use xlinkHref="#instagram"></use></svg></a></li>
-        <li className="ms-3"><a className="link-light" href="#"><svg className="bi" width="24" height="24"><use xlinkHref="#facebook"></use></svg></a></li>
+        <li className="ms-3"><a className="link-light"><svg className="bi" width="24" height="24"><use xlinkHref="#twitter"></use></svg></a></li>
+        <li className="ms-3"><a className="link-light"><svg className="bi" width="24" height="24"><use xlinkHref="#instagram"></use></svg></a></li>
+        <li className="ms-3"><a className="link-light"><svg className="bi" width="24" height="24"><use xlinkHref="#facebook"></use></svg></a></li>
       </ul>
       <i className="fab fa-facebook-f"></i>
     </div> */}

@@ -1,13 +1,14 @@
-.Auth-form-title{
+.Auth-form-title {
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 
 }
+
 .Auth-form-container {
 
-background-image: url('./R.jpeg') no-repeat;
-background-size: cover;
+  background-image: url(./R.jpeg) no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +22,7 @@ background-size: cover;
   padding-top: 30px;
   padding-bottom: 20px;
   border-radius: 8px;
-  background-color:rgb(245, 235, 224)
+  background-color: rgb(245, 235, 224)
 }
 
 .Auth-form-content {
@@ -43,45 +44,57 @@ label {
   color: rgb(9, 8, 8);
 }
 
-a{
+a {
   color: red;
 }
 
-a:hover{
+a:hover {
   color: palevioletred;
 }
 
-a:click{
+a:click {
   color: palevioletred;
 }
 
-.link-primary{
+.link-primary {
   color: red !important;
 
 
 
 }
-.link-primary:hover{
+
+.link-primary:hover {
   color: palevioletred !important;
   cursor: pointer;
 }
 
-.link-primary:click{
+.link-primary:click {
   color: palevioletred !important;
 }
-.balance{
+
+.balance {
   margin-top: 5vh;
 }
 
-.title{
+.title {
   margin-left: 42vw !important;
   margin-top: 2vh !important;
   color: red;
-  font-size:xx-large;
-} 
+  font-size: xx-large;
+}
 
-#signupsubmit{
+.sub {
+  width: 16.5vw !important;
+  margin-bottom: 10px !important;
+}
 
-  width: 20vw !important;
+.adm {
+  width: 8.25vw !important;
+  margin-right: .25vw !important;
 
+}
+
+.mgr {
+  width: 8vw !important;
+  margin-left: 1vw !important;
 }

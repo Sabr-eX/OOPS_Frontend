@@ -1,13 +1,14 @@
-.Auth-form-title{
+.Auth-form-title {
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 
 }
+
 .Auth-form-container {
 
-background: url("https://th.bing.com/th/id/R.f208d763e52cb1a54a66d6b7bd48f858?rik=8lGsv0WdLQD39A&riu=http%3a%2f%2fwww.dvd-ppt-slideshow.com%2fimages%2fppt-background%2fbackground-16.jpg&ehk=CP8D6KqnQ%2byrVEb0TNe7hc2MHh9VZh35dKO6TXsXVtI%3d&risl=&pid=ImgRaw&r=0") no-repeat;
-background-size: cover;
+  background: url(https://th.bing.com/th/id/R.f208d763e52cb1a54a66d6b7bd48f858?rik=8lGsv0WdLQD39A&riu=http%3a%2f%2fwww.dvd-ppt-slideshow.com%2fimages%2fppt-background%2fbackground-16.jpg&ehk=CP8D6KqnQ%2byrVEb0TNe7hc2MHh9VZh35dKO6TXsXVtI%3d&risl=&pid=ImgRaw&r=0) no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +22,7 @@ background-size: cover;
   padding-top: 30px;
   padding-bottom: 20px;
   border-radius: 8px;
-  background-color:rgb(245, 235, 224)
+  background-color: rgb(245, 235, 224)
 }
 
 .Auth-form-content {
@@ -43,32 +44,34 @@ label {
   color: rgb(9, 8, 8);
 }
 
-a{
+a {
   color: red;
 }
 
-a:hover{
+a:hover {
   color: palevioletred;
 }
 
-a:click{
+a:click {
   color: palevioletred;
 }
 
-.link-primary{
+.link-primary {
   color: red !important;
 
 
 
 }
-.link-primary:hover{
+
+.link-primary:hover {
   color: palevioletred !important;
   cursor: pointer;
 }
 
-.link-primary:click{
+.link-primary:click {
   color: palevioletred !important;
 }
-.balance{
+
+.balance {
   margin-top: 5vh;
 }
