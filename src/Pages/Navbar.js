@@ -56,9 +56,11 @@ export default function Navbar({ count, handleShow, product, addToCart }) {
               </Link>{" "}
             </li>
             <li>
+              <Link to ="/wallet">
               <a className="dropdown-item" href="#">
                 My Wallet
               </a>
+              </Link>
             </li>
             <li>
               <Link to="/order_history">

@@ -193,7 +193,7 @@ export default function () {
               </Link>
             </div>
             <div className="col-7">
-              <Link to="/manager">
+              <Link to="/managersignin">
                 <button formAction="/manager" className="btn btn-danger mgr">
                   Manager Login
                 </button>

@@ -115,7 +115,7 @@ export default function () {
               </Link>
             </div>
             <div className="col-7">
-              <Link to="/manager">
+              <Link to="/managersignin">
                 <button className="btn btn-danger mgr">Login as Manager</button>
               </Link>
             </div>

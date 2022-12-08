@@ -8,6 +8,7 @@ import Payment from "./Pages/Payment";
 import Wishlist from "./Pages/Wishlist";
 import Profilepagecomponent from "./Pages/profilepage";
 import Confirmation from './Pages/Confirmation';
+import Wallet from "./Pages/Wallet";
 
 import NotFound from "./components/NotFound";
 import { ToastContainer } from "react-toastify";
@@ -59,6 +60,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/profile" element={<Profilepagecomponent />} />
           <Route path="/confirmation" element={<Confirmation/>}/>
+          <Route path="/wallet" element={<Wallet/>}/>
 
           <Route
             path="/auth"

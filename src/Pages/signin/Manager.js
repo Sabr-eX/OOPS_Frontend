@@ -61,7 +61,7 @@ export default function (props) {
   if (authMode === "signin") {
     return (
       <div className="Auth-form-container">
-        <h3 className="position-absolute start-0 top-0 ms-1">Name</h3>
+        <h3 className="position-absolute start-0 top-0 title">Welcome to Shopify</h3>
         <form className="Auth-form">
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Manager Sign In</h3>

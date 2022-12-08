@@ -62,7 +62,7 @@ else{
       return (
         
         <div className="Auth-form-container">
-          <h3 className="position-absolute start-0 top-0 ms-1">Name</h3>
+          <h3 className="position-absolute start-0 top-0 title">Welcome to Shopify</h3>
           <form className="Auth-form">
             <div className="Auth-form-content">
               <h3 className="Auth-form-title" >Admin Sign In</h3>
@@ -100,7 +100,7 @@ else{
                 Login as User
               </button>
               </Link>
-              <Link to='/manager'><button formAction="/manager" className="btn btn-danger">
+              <Link to='/managersignin'><button formAction="/manager" className="btn btn-danger">
                 Login as Manager
               </button>
               </Link>
