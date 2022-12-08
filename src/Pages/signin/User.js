@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import "./User.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { nlNL } from "@mui/x-data-grid";
+
 
 export default function () {
   const navigate = useNavigate();
@@ -54,7 +53,7 @@ export default function () {
     if (!result.role.localeCompare("CUSTOMER")) {
       navigate("/CustomerHome");
     } else {
-      window.prompt("sometext", "defaultText");
+      alert("defaultText");
     }
   }
 

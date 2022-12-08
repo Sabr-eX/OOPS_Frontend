@@ -65,6 +65,7 @@ export default function Basic() {
       }
       postObject.orderItems.push(tempObject);
     }
+    console.log(postObject);
 
     let result = await fetch("https://gada-electronics.up.railway.app/orders/create", {
       method: "POST",

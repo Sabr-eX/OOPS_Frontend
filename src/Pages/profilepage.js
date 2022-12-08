@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import "./profilepage.css";
 import axios from "axios";
-
+import Navbar from "./Navbar";
 export default function Profilepagecomponent() {
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
   // localStorage.setItem("user-info", JSON.stringify(result))
@@ -49,8 +49,9 @@ export default function Profilepagecomponent() {
 
   return (
     <div className="pic">
+      <Navbar/>
       <br />
-      <p className="h1 userptext ">User Profile</p>
+      <p className="h1 userptext">User Profile</p>
       <hr className="mb-5 mt-3 line" width="80%" />
       <br />
 
