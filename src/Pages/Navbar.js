@@ -7,12 +7,12 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar({ count, handleShow, product, addToCart }) {
-  function signout (){
-     localStorage.removeItem("user-info");
+  function signout() {
+    localStorage.removeItem("cart");
+    localStorage.removeItem("wishlist");
+    localStorage.removeItem("user-info");
   }
- 
-    
-    
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -62,10 +62,10 @@ export default function Navbar({ count, handleShow, product, addToCart }) {
               </Link>{" "}
             </li>
             <li>
-              <Link to ="/wallet">
-              <a className="dropdown-item" href="#">
-                My Wallet
-              </a>
+              <Link to="/wallet">
+                <a className="dropdown-item" href="#">
+                  My Wallet
+                </a>
               </Link>
             </li>
             <li>
@@ -78,7 +78,12 @@ export default function Navbar({ count, handleShow, product, addToCart }) {
             </li>
             <li>
               <Link to="/">
-                <button className="dropdown-item btn btn-danger" onClick={signout}>Sign Out</button>
+                <button
+                  className="dropdown-item btn btn-danger"
+                  onClick={signout}
+                >
+                  Sign Out
+                </button>
               </Link>
             </li>
           </ul>
