@@ -1,5 +1,5 @@
 .pic {
-    /* background-image: url(https://media.istockphoto.com/id/938453686/photo/abstract-red-dreamy-background.jpg?s=612x612&w=0&k=20&c=vmLUO8xKr4B-lzgOqhEkfY_tMjF_XYukeLUXlNPsY6M=) !important; */
+    background-image: url(https://media.istockphoto.com/id/938453686/photo/abstract-red-dreamy-background.jpg?s=612x612&w=0&k=20&c=vmLUO8xKr4B-lzgOqhEkfY_tMjF_XYukeLUXlNPsY6M=) !important;
     background-size: cover;
     /* background-color: #E1F5FE; */
 
@@ -55,4 +55,3 @@ label {
     align-self: center !important;
 
 }
-

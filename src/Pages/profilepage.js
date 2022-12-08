@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import "./profilepage.css";
 import axios from "axios";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+
 export default function Profilepagecomponent() {
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
   // localStorage.setItem("user-info", JSON.stringify(result))
@@ -17,7 +19,7 @@ export default function Profilepagecomponent() {
     event.preventDefault();
     setEditOn(!editOn);
   };
-
+  const navigate = useNavigate();
   const submit = async (event) => {
     event.preventDefault();
     setEditOn(!editOn);
@@ -47,9 +49,27 @@ export default function Profilepagecomponent() {
     setPassword("");
   };
 
+  const deleteAccount = async (event) => {
+    event.preventDefault();
+    setEditOn(true);
+
+    let response = await axios.post(
+      "https://gada-electronics.up.railway.app/users/delete/" + userInfo.id
+    );
+    const status = await response.status;
+
+    if (status === 200) {
+      console.log("status ok bro");
+      localStorage.removeItem("user-info");
+      localStorage.removeItem("wishlist");
+      localStorage.removeItem("cart");
+      navigate("/user");
+    }
+  };
+
   return (
     <div className="pic">
-      <Navbar/>
+      <Navbar />
       <br />
       <p className="h1 userptext">User Profile</p>
       <hr className="mb-5 mt-3 line" width="80%" />
@@ -220,14 +240,18 @@ export default function Profilepagecomponent() {
         </div>
 
         {editOn ? (
-          <button className="btn btn-danger mt-5" onClick={handleClick}>
-            Edit
+          <button className="btn btn-danger mt-5 me-5" onClick={handleClick}>
+            Edit Details
           </button>
         ) : (
-          <button className="btn btn-success mt-5" onClick={submit}>
-            Save
+          <button className="btn btn-success mt-5 me-5" onClick={submit}>
+            Save Details
           </button>
         )}
+
+        <button className="btn btn-danger mt-5 ms-5 " onClick={deleteAccount}>
+          Delete Account
+        </button>
       </form>
     </div>
   );
