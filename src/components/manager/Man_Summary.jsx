@@ -9,12 +9,27 @@ import Transactions from "./Man_summary/Transactions";
 import AllTimeData from "./Man_summary/AllTimeData";
 
 const Man_Summary = () => {
+  // const [report, setReport] = useState([]);
   // const [users,setUsers] = useState([]);
   // const [usersPrec,setUsersPrec] = useState(0);
   // const [orders,setOrders] = useState([]);
   // const [ordersPrec,setOrdersPrec] = useState(0);
   // const [income,setIncome] = useState([]);
   // const [incomePrec,setIncomePrec] = useState(0);
+
+  // useEffects(() => {
+  //   async function fetchReport() {
+  //     try {
+  //       const res = await axios.get(
+  //         `https://gada-electronics.up.railway.app/admin/reports`
+  //       );
+  //       setReport(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   fetchReport();
+  // }, []);
 
   // function compare(a,b){
   //   if(a._id<b._id){
@@ -63,16 +78,14 @@ const Man_Summary = () => {
       title: "Users",
       color: "rgb(102, 108, 255)",
       bgColor: "rgba(102, 108, 255, 0.12)",
-      percentage: 30,
     },
     {
       icon: <FaClipboard />,
-      digits: 70,
+      digits: 75,
       isMoney: false,
       title: "Orders",
       color: "rgb(38, 198, 149)",
       bgColor: "rgba(38, 198, 149, 0.12)",
-      percentage: 20,
     },
     {
       icon: <FaChartBar />,
@@ -81,7 +94,6 @@ const Man_Summary = () => {
       title: "Earnings",
       color: "rgb(258, 181, 40)",
       bgColor: "rgba(258, 181, 40, 0.12)",
-      percentage: 60,
     },
   ];
   return (
@@ -90,10 +102,7 @@ const Man_Summary = () => {
         <Overview>
           <Title>
             <h2>Overview</h2>
-            <p>
-              How our online supermarket is performing compared to the previous
-              month
-            </p>
+            <p>How our online supermarket is performing</p>
           </Title>
           <WidgetWrapper>
             {data?.map((data, index) => (

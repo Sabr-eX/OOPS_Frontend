@@ -1,8 +1,25 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const AllTimeData = () => {
   const { items } = useSelector((state) => state.products);
+  const [report, setReport] = useState([]);
+
+  useEffect(() => {
+    async function fetchReport() {
+      try {
+        const res = await axios.get(
+          `https://gada-electronics.up.railway.app/admin/reports`
+        );
+        setReport(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchReport();
+  }, []);
 
   console.log(items);
 
@@ -11,19 +28,19 @@ const AllTimeData = () => {
       <h3>All Time</h3>
       <Info>
         <Title>Users</Title>
-        <Data>200</Data>
+        <Data>{report.totalUsers}</Data>
       </Info>
       <Info>
         <Title>Products</Title>
-        <Data>20</Data>
+        <Data>{report.totalProducts}</Data>
       </Info>
       <Info>
         <Title>Orders</Title>
-        <Data>200</Data>
+        <Data>{report.totalOrders}</Data>
       </Info>
       <Info>
         <Title>Earnings</Title>
-        <Data>₹20,000</Data>
+        <Data>₹{report.totalSales}</Data>
       </Info>
     </Main>
   );

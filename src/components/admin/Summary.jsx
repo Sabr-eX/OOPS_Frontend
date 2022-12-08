@@ -90,10 +90,7 @@ const Summary = () => {
         <Overview>
           <Title>
             <h2>Overview</h2>
-            <p>
-              How our online supermarket is performing compared to the previous
-              month
-            </p>
+            <p>How our online supermarket is performing</p>
           </Title>
           <WidgetWrapper>
             {data?.map((data, index) => (
