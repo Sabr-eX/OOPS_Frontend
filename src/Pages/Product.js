@@ -24,7 +24,7 @@ export default function Product({ product, addToCart, addToWishlist }) {
                   <div className="card-body">
                     <div key={product.id}>
                       <h4 className="card-title">
-                        <Link to={`/${product.id}`}>{product.name}</Link>
+                        <Link to={`/${product.id}`} state={{ product: product}}>{product.name}</Link>
                         <br />
                       </h4>
                     </div>

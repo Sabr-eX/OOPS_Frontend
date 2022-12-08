@@ -20,7 +20,7 @@ useEffect(() => {
 
 
 return (
-  <div>
+  <div style={{ height: 400, width: "100%" }}>
 <div className="d-flex flex-column">
       <h1 className="text-white m-3">Products</h1>
       <table className="table table-dark table-xl m-3">
