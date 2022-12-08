@@ -47,12 +47,13 @@ export default function ProductsList() {
 
       <div className="d-flex flex-column">
         <h1 className="text-white m-3">Products</h1>
-        <table className="table table-dark table-xl m-3">
+        <table className="table table-striped table-bordered table-hover table-xl m-3">
           <thead>
             <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
               <th scope="col">Product ID</th>
-              <th scope="col">Product Name</th>
               <th scope="col">Image</th>
+              <th scope="col">Product Name</th>
+
               <th scope="col">Price</th>
               <th scope="col">Quantiy</th>
               <th scope="col">Edit</th>
@@ -65,10 +66,11 @@ export default function ProductsList() {
               return (
                 <tr>
                   <td>{product.id}</td>
-                  <td>{product.name}</td>
                   <ImageContainer>
                     <img src={product?.image} alt="" />
                   </ImageContainer>
+                  <td>{product.name}</td>
+
                   <td>₹ {product.price}</td>
                   <td>{product.quantity}</td>
                   <td>

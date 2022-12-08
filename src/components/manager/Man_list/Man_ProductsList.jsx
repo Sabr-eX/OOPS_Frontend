@@ -1,36 +1,36 @@
 import styled from "styled-components";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 // import EditProduct from "../EditProduct";
 
-
 export default function Man_ProductsList() {
+  const [product, setProduct] = useState();
 
-const [product, setProduct] = useState();
-
-useEffect(() => {
-  const getProducts = async () => {
-    await axios.get('https://gada-electronics.up.railway.app/products/all')
-      .then((res) => { setProduct(res?.data); })
-      .then((res) => console.log(res?.data))
-  }
-  getProducts();
-}, [])
-
-
+  useEffect(() => {
+    const getProducts = async () => {
+      await axios
+        .get("https://gada-electronics.up.railway.app/products/all")
+        .then((res) => {
+          setProduct(res?.data);
+        })
+        .then((res) => console.log(res?.data));
+    };
+    getProducts();
+  }, []);
 
   return (
     <div>
       <div className="d-flex flex-column">
         <h1 className="text-white m-3">Products</h1>
-        <table className="table table-dark table-xl m-3">
+        <table className="table table-striped table-bordered table-hover table-xl m-3">
           <thead>
             <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
               <th scope="col">Product ID</th>
-              <th scope="col">Product Name</th>
               <th scope="col">Image</th>
+              <th scope="col">Product Name</th>
+
               <th scope="col">Price</th>
               {/* <th scope="col">Edit</th> */}
               <th scope="col">Delete</th>
@@ -41,10 +41,11 @@ useEffect(() => {
               return (
                 <tr style={{ height: "5px", fontSize: "17px" }}>
                   <td>{product.id}</td>
-                  <td>{product.name}</td>
                   <ImageContainer>
                     <img src={product?.image} alt="" />
                   </ImageContainer>
+                  <td>{product.name}</td>
+
                   <td>₹ {product.price}</td>
                   {/* <td>
                 <button type="button" class="btn btn-success btn-xsm me-2">
@@ -66,29 +67,29 @@ useEffect(() => {
   );
 }
 
-  const ImageContainer = styled.div`
-    img{
-      height: 40px;
-    }
-  `;
-
-  const Actions = styled.div`
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  button{
-    border:none;
-    outline: none;
-    padding:3px 5px;
-    color:white;
-    border-radius:3px;
-    cursor:pointer;
+const ImageContainer = styled.div`
+  img {
+    height: 40px;
   }
-  `;
+`;
 
-  const Delete=styled.button`
-    background-color:rgb(255,77,73);
-  `;
-  const View=styled.button`
-    background-color:rgb(114,225,40);
-  `;
+const Actions = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  button {
+    border: none;
+    outline: none;
+    padding: 3px 5px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+`;
+
+const Delete = styled.button`
+  background-color: rgb(255, 77, 73);
+`;
+const View = styled.button`
+  background-color: rgb(114, 225, 40);
+`;

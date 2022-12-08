@@ -2,15 +2,18 @@ import styled from "styled-components";
 import { Outlet, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaUser, FaStore, FaClipboard, FaTachometerAlt } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const Man_Dashboard = () => {
   const auth = useSelector((state) => state.auth);
-
+  function signout() {
+    localStorage.removeItem("user-info");
+  }
   // if (!auth.isAdmin) return <p>Access denied. Not an Admin!</p>;
 
   return (
     <StyledDashboard>
       <SideNav>
+        <Shopify style={{ height: "75px", fontSize: "39px" }}>Shopify</Shopify>
         <h3>Quick Links</h3>
         <NavLink
           className={({ isActive }) =>
@@ -36,6 +39,11 @@ const Man_Dashboard = () => {
         >
           <FaClipboard /> Orders
         </NavLink>
+        <Link to="/">
+          <button className="btn btn-warning" onClick={signout}>
+            Sign Out
+          </button>
+        </Link>
       </SideNav>
       <Content>
         <Outlet />
@@ -81,6 +89,14 @@ const SideNav = styled.div`
       font-size: 18px;
     }
   }
+`;
+
+const Shopify = styled.div`
+  color: rgb(251, 158, 0);
+  background-color: rgb(13, 10, 5, 0.8);
+  padding: 3px 5px;
+  border-radius: 3px;
+  font-size: 14px;
 `;
 
 const Content = styled.div`

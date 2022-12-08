@@ -21,7 +21,7 @@ export default function OrdersList() {
   return (
     <div className="d-flex flex-column">
       <h1 className="text-white m-3">Orders</h1>
-      <table className="table table-dark table-xl m-3">
+      <table className="table table-striped table-bordered table-hover table-xl m-3">
         <thead>
           <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
             <th scope="col">Order ID</th>

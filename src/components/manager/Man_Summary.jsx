@@ -1,23 +1,17 @@
-import { useState, useEffects } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FaUsers, FaChartBar, FaClipboard } from "react-icons/fa";
+import { FaUsers, FaChartBar, FaClipboard, FaDropbox } from "react-icons/fa";
 import Widget from "./Man_summary/Widget";
 import axios from "axios";
-import { setHeaders, url } from "../../slices/api";
 import Chart from "./Man_summary/Chart";
 import Transactions from "./Man_summary/Transactions";
 import AllTimeData from "./Man_summary/AllTimeData";
 
 const Man_Summary = () => {
   const [report, setReport] = useState([]);
-  // const [users,setUsers] = useState([]);
-  // const [usersPrec,setUsersPrec] = useState(0);
-  // const [orders,setOrders] = useState([]);
-  // const [ordersPrec,setOrdersPrec] = useState(0);
-  // const [income,setIncome] = useState([]);
-  // const [incomePrec,setIncomePrec] = useState(0);
+  
 
-  useEffects(() => {
+  useEffect(() => {
     async function fetchReport() {
       try {
         const res = await axios.get(
@@ -31,49 +25,11 @@ const Man_Summary = () => {
     fetchReport();
   }, []);
 
-  // function compare(a,b){
-  //   if(a._id<b._id){
-  //     return 1;
-  //   }
-  //   if(a._id>b._id){
-  //     return -1;
-  //   }
-  //   return 0;
-  // }
-
-  // useEffects(()=>{
-  //   async function fetchData(){
-  //     try{
-  //       const res =await axios.get(`${url}/users/stats`,setHeaders());
-  //       res.data.sort(compare)
-  //       console.log("stats",res.data);
-  //       setUsers(res.data);
-  //       setUsersPrec((res.data[0].total = res.data[1].total)/res.data[1].total * 100);
-  //     }catch(err){
-  //       console.log(err);
-  //     }
-  //   }
-  //   fetchData()
-  // },[]);
-
-  // useEffects(()=>{
-  //   async function fetchData(){
-  //     try{
-  //       const res =await axios.get(`${url}/users/stats`,setHeaders());
-  //       res.data.sort(compare)
-  //       console.log("stats",res.data);
-  //       setOders(res.data);
-  //       setOdersPrec((res.data[0].total = res.data[1].total)/res.data[1].total * 100);
-  //     }catch(err){
-  //       console.log(err);
-  //     }
-  //   }
-  //   fetchData()
-  // },[]);
+  
   const data = [
     {
       icon: <FaUsers />,
-      digits: 50,
+      digits: report.totalUsers,
       isMoney: false,
       title: "Users",
       color: "rgb(102, 108, 255)",
@@ -81,15 +37,23 @@ const Man_Summary = () => {
     },
     {
       icon: <FaClipboard />,
-      digits: 75,
+      digits: report.totalOrders,
       isMoney: false,
       title: "Orders",
       color: "rgb(38, 198, 149)",
       bgColor: "rgba(38, 198, 149, 0.12)",
     },
     {
+      icon: <FaDropbox />,
+      digits: report.totalProducts,
+      isMoney: false,
+      title: "Products",
+      color: "rgb(164, 50, 72)",
+      bgColor: "rgba(164, 50, 72, 0.12)",
+    },
+    {
       icon: <FaChartBar />,
-      digits: 500,
+      digits: report.totalSales,
       isMoney: true,
       title: "Earnings",
       color: "rgb(258, 181, 40)",
@@ -102,7 +66,7 @@ const Man_Summary = () => {
         <Overview>
           <Title>
             <h2>Overview</h2>
-            <p>How our online supermarket is performing</p>
+            <p>Performance of our online supermarket</p>
           </Title>
           <WidgetWrapper>
             {data?.map((data, index) => (

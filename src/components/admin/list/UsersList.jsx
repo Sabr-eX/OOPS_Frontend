@@ -56,31 +56,30 @@ async function handleEdit(id){
   //   result = await result.json();
 }
 
-return (
-  <div style={{ height: 400, width: "100%" }}>
-<div className="d-flex flex-column">
-      <h1 className="text-white m-3">Users</h1>
-      <table className="table table-dark table-xl m-3">
-        <thead>
-          <tr>
-            <th scope="col">User ID</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Phone No.</th>
-            {/* <th scope="col">Price</th> */}
-            {/* <th scope="col">Edit</th> */}
-            <th scope="col">Role</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-
-{product?.map(product => {
-        return (
-          <tr>
-            <td>{product.id}</td>
-            <td>{product.name}</td>
-            {/* <ImageContainer>
+  return (
+    <div style={{ height: 400, width: "100%" }}>
+      <div className="d-flex flex-column">
+        <h1 className="text-white m-3">Products</h1>
+        <table className="table table-striped table-bordered table-hover table-xl m-3">
+          <thead>
+            <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
+              <th scope="col">Product ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Phone No.</th>
+              {/* <th scope="col">Price</th> */}
+              {/* <th scope="col">Edit</th> */}
+              <th scope="col">Role</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {product?.map((product) => {
+              return (
+                <tr style={{ height: "5px", fontSize: "17px" }}>
+                  <td>{product.id}</td>
+                  <td>{product.name}</td>
+                  {/* <ImageContainer>
  <img src={product?.image} alt=""/>
  </ImageContainer> */}
                   <td>{product.phone}</td>
