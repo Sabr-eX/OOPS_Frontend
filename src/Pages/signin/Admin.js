@@ -108,11 +108,11 @@ else {
                 </div>
                 <div className="d-grid gap-2 mt-3">
               <Link to='/user'><button  className="btn btn-danger">
-                Login as User
+                User Login
               </button>
               </Link>
               <Link to='/managersignin'><button formAction="/manager" className="btn btn-danger">
-                Login as Manager
+                Manager Login
               </button>
               </Link>
               </div>
