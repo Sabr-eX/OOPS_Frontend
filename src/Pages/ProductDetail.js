@@ -4,9 +4,36 @@ import { useParams, useLocation } from "react-router-dom";
 import "./detail.css"
 import Navbar from "./Navbar";
 
+
 function ProductDetail() {
   let {state} = useLocation();
   const product = state["product"];
+  
+
+  const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]");
+  const [cart, setCart] = useState(cartfromlocal);
+
+  const addToCart = async (data) => {
+    // Check if the product is already in the cart
+    const isProductInCart = cart.find((item) => item.id === data.id);
+
+    if (isProductInCart) {
+      // If the product is already in the cart, increase the quantity
+      setCart(
+        cart.map((item) =>
+          item.id === data.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      // If the product is not in the cart, add it to the cart
+      setCart([...cart, { ...data, quantity: 1 }]);
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+
 
     return (
         <div className="detail">
@@ -28,7 +55,7 @@ function ProductDetail() {
                 <br/>
                 <br/>
                 {/* <button type="button" class="btn btn-danger mt-3 mr-3">Add to cart</button> */}
-                <button type="button" class="btn btn-danger mt-3">Add to cart</button>
+                <button type="button" class="btn btn-danger mt-3" onClick={() => addToCart(product)}>Add to cart</button>
               </div>
             </div>
 

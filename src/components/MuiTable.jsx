@@ -6,7 +6,7 @@ const columns = [
   {
     field: "image",
     headerName: "",
-    width: 80,
+    width: 200,
     sortable: false,
     renderCell: (params) => (
       <img
@@ -26,27 +26,39 @@ const columns = [
   //   width:20,
   // },
   {
-    field: "title",
+    field: "productName",
     headerName: "Product Name",
     sortable: false,
-    flex: 1,
-    width: 20,
+    // flex: 1,
+    width: 300,
   },
-  {field: "sdfsdf", headerName: "Quantity", width: 120},
-  { field: "price", headerName: "Price", width: 120 },
-  { field: "category", headerName: "Status", sortable: false, width: 120 },//change the thing here
-  {field: "ghtyrh",headerName: "Date of order", sortable:false, width:120}
+  { field: "quantity", headerName: "Quantity", width: 120 },
+  { field: "totalPrice", headerName: "Price", width: 120 },
+  { field: "status", headerName: "Status", sortable: false, width: 120 },//change the thing here
+  { field: "orderDate", headerName: "Date of order", sortable: false, width: 200 }
 ];
 
+const transformData = (products) => {
+  products.map((product) => {
+    product.productName = product?.products?.name;
+    product.orderDate = new Date(product?.orderDate);
+    product.image = product?.products?.image;
+  })
 
+  return products;
+
+}
 const DataTable = ({ products }) => {
+  let newProducts = transformData(products);
+  console.log(newProducts);
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={products}
+        rows={newProducts}
         columns={columns}
         pageSize={5}
-         rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[5]}
         disableColumnMenu
         disableSelectionOnClick
       />

@@ -1,10 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBCol, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
+import './Payment.css'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Basic() {
+  const navigate = useNavigate();
+  const userInfoFromLS = JSON.parse(localStorage.getItem("user-info"))
+  let [balance, setbalance] = useState(userInfoFromLS?.balance)
+  let [error, setError] = useState(false);
+  let [errorMessage, setErrorMessage] = useState("");
 
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
@@ -69,11 +77,21 @@ export default function Basic() {
     // console.log(result.text());
     if (result.ok) {
       result = await result.json();
+      const newUserInfo = result[0].user;
+      console.log(newUserInfo)
+
+      localStorage.setItem('user-info', JSON.stringify(newUserInfo))
+      setError(false);
+      navigate('/confirmation');
       // Completed
     }
     else {
       result = await result.text();
+      setError(true);
+      setErrorMessage(result);
       // This means the error is coming
+      // State banan, eerror -> boolean 
+      // Erro Message
     }
     console.log(result);
 
@@ -83,19 +101,19 @@ export default function Basic() {
     <div className="mx-auto mt-5" style={{ maxWidth: '900px' }}>
       <Navbar />
       <MDBRow>
-        <MDBCol md="8" className="mb-4">
+        {/* <MDBCol md="8" className="mb-4">
           <MDBCard className="mb-4">
-            
+
             <MDBCardBody>
-              <form> 
+              <form>
                 <MDBInput label='Address' type='text' className="mb-4" />
               </form>
             </MDBCardBody>
           </MDBCard>
-        </MDBCol>
-        <MDBCol md="4" className="mb-4">
+        </MDBCol> */}
+        <MDBCol md="4" className="mb-4 box">
           <MDBCard className="mb-4">
-            <MDBCardHeader className="py-3">
+            <MDBCardHeader className="py-1">
               <MDBTypography tag="h5" className="mb-0">Summary</MDBTypography>
             </MDBCardHeader>
             <MDBCardBody>
@@ -108,8 +126,13 @@ export default function Basic() {
                   <div>
                     <strong>Wallet Balance</strong>
                   </div>
-                  <span><strong>Balance</strong></span>
+                  <span><strong>{balance}</strong></span>
                   {/* <span><strong>Available Balance</strong></span> */}
+                  {error &&
+                    <h6>
+                      {errorMessage}
+                    </h6>
+                  }
                 </MDBListGroupItem>
               </MDBListGroup>
               <Link to='/confirmation'>
