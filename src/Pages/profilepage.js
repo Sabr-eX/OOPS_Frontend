@@ -72,7 +72,7 @@ export default function Profilepagecomponent() {
       <Navbar />
       <br />
       <p className="h1 userptext">User Profile</p>
-      <hr className="mb-5 mt-3 line" width="80%" />
+      {/* <hr className="mb-5 mt-3 line" width="80%" /> */}
       <br />
 
       <form>

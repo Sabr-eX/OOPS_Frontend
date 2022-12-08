@@ -33,6 +33,10 @@
   color: black;
 }
 
+.k3 {
+  color: red !important;
+}
+
 .cart_btn {
   width: 10vw !important
 }

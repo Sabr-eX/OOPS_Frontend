@@ -1,18 +1,15 @@
 import axios from "axios";
 import Axios from "axios";
-import React, { useEffect, useState, useRef } from "react"
-import './Wallet.css'
+import React, { useEffect, useState, useRef } from "react";
+import "./Wallet.css";
 import Navbar from "./Navbar";
 
-
 export default function (props) {
-
-  const userInfoFromLS = JSON.parse(localStorage.getItem("user-info"))
+  const userInfoFromLS = JSON.parse(localStorage.getItem("user-info"));
   let [addamount, setAddAmount] = useState("");
-  let [authMode, setAuthMode] = useState("signin")
-  let [balance, setbalance] = useState(userInfoFromLS?.balance)
+  let [authMode, setAuthMode] = useState("signin");
+  let [balance, setbalance] = useState(userInfoFromLS?.balance);
   // let [newBalance,setNewBalance]= useState("")
-
 
   const handleInput = (e) => {
     setAddAmount(e.target.value);
@@ -21,12 +18,10 @@ export default function (props) {
   //   setNewBalance(e.target.value);
   // };
 
-
   // const logValue = () => {
   //   setName(name)
   //   console.log(name);
   // };
-
 
   // useEffect(() => {
   //   fetchBalance();
@@ -38,34 +33,28 @@ export default function (props) {
 
   // }
 
-
-
-
   async function add(e) {
-
     e.preventDefault();
-    console.log(userInfoFromLS)
+    console.log(userInfoFromLS);
 
-    balance = parseInt(addamount)
-    let item = { balance }
-    let result = await fetch("https://gada-electronics.up.railway.app/users/edit/" + userInfoFromLS?.id, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(item)
-
-    })
-    result = await result.json()
-    localStorage.setItem("user-info", JSON.stringify(result))
-    setbalance(result.balance)
+    balance = parseInt(addamount);
+    let item = { balance };
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/users/edit/" +
+        userInfoFromLS?.id,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(item),
+      }
+    );
+    result = await result.json();
+    localStorage.setItem("user-info", JSON.stringify(result));
+    setbalance(result.balance);
   }
-
-
-
-
-
 
   // function addBalance(){
   //   let item = {addamount}
@@ -73,14 +62,12 @@ export default function (props) {
   // }
 
   return (
-
-
     <div className="Auth-form-container">
-     <Navbar/>
+      <Navbar />
 
       <form className="Auth-form">
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title" >My Wallet</h3>
+          <h3 className="Auth-form-title">My Wallet</h3>
           {/* <div className="text-center text-white">
               Not registered yet?{" "}
               <span className="link-primary" onClick={changeAuthMode}>
@@ -89,14 +76,16 @@ export default function (props) {
             </div> */}
 
           <div className="form-group mt-3">
-            <label>Enter amount you want to add </label>
+            <label>
+              Enter amount you want to add <br />
+              (INR)
+            </label>
             <input
               onChange={handleInput}
               type="amount"
               className="form-control mt-1"
               placeholder="Amount"
               value={addamount}
-
             />
           </div>
           <div className="d-grid gap-2 mt-3">
@@ -122,17 +111,14 @@ export default function (props) {
                 
               />
             </div> */}
-          <div className='balance'>
-            <label>Balance :- {balance}</label><br></br>
-            
+          <div className="balance">
+            <label>Balance : {balance}</label>
+            <br></br>
           </div>
-
-
         </div>
       </form>
     </div>
-  )
-
+  );
 
   // return (
 

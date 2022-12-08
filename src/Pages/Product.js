@@ -10,7 +10,7 @@ export default function Product({ product, addToCart, addToWishlist }) {
       {product?.map((product) => {
         return (
           <div className="container">
-            <div className="card mb-3 ">
+            <div className="card mb-3 " href="">
               <div className="row g-0">
                 <div className="col-4">
                   <img
@@ -24,7 +24,12 @@ export default function Product({ product, addToCart, addToWishlist }) {
                   <div className="card-body">
                     <div key={product.id}>
                       <h4 className="card-title">
-                        <Link to={`/${product.id}`} state={{ product: product}}>{product.name}</Link>
+                        <Link
+                          to={`/${product.id}`}
+                          state={{ product: product }}
+                        >
+                          {product.name}
+                        </Link>
                         <br />
                       </h4>
                     </div>

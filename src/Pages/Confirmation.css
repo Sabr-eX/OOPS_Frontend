@@ -1,30 +1,37 @@
-.main{
+.main {
     /* background-color: peachpuff; */
-    height:100vh !important;
+    background-image: url(./R.jpeg);
+    background-size: cover;
+    height: 100vh !important;
     margin-top: 0vh !important;
 }
-.heading{
+
+.heading {
     margin-top: 15vh;
+    color: darkslategray !important;
 }
 
-.heading2{
-    margin-top:10vh
+.heading2 {
+    margin-top: 10vh;
+    color: red !important;
 }
 
 
 
-.b1{
-    margin-top: 15vh;
-    margin-left: 5px !important;
-    margin-right:5px !important;
-}
-.b2{
+.b1 {
     margin-top: 15vh;
     margin-left: 5px !important;
-    margin-right:5px !important;
+    margin-right: 5px !important;
 }
-.b3{
-    margin-top:15vh;
+
+.b2 {
+    margin-top: 15vh;
     margin-left: 5px !important;
-    margin-right:5px !important;
+    margin-right: 5px !important;
+}
+
+.b3 {
+    margin-top: 15vh;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
 }

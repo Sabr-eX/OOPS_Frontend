@@ -82,7 +82,7 @@ function WishlistList({ addToCart }) {
       <div className="row mt-4 mb-4">
         <div className="col-2" />
         <div className="col-2">
-          <a href="/">
+          <a href="/customerHome">
             <button className="btn btn-warning">Continue Shopping</button>
           </a>
         </div>
