@@ -112,7 +112,7 @@ export default function (props) {
               />
             </div> */}
           <div className="balance">
-            <label>Balance : {balance}</label>
+            <label>Balance : ₹{balance}</label>
             <br></br>
           </div>
         </div>

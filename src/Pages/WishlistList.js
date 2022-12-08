@@ -7,31 +7,43 @@ function WishlistList({ addToCart }) {
   );
 
   const [WISHLIST, setWISHLIST] = useState(wishlistfromlocal);
+  const [wishlistlength, setwishlistlength] = useState(WISHLIST.length);
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(WISHLIST));
   }, [WISHLIST]);
 
+  useEffect(() => {
+    setwishlistlength(WISHLIST.length);
+  }, [WISHLIST]);
+
+  function deletewishlist() {
+    setWISHLIST([]);
+  }
+
   return (
     <div className="k">
       <h1 className="k2">Your Wishlist</h1>
 
-      {WISHLIST?.map((wishlistItem, wishlistindex) => {
-        return (
-          <div className="wishlist">
-            <div className="row mt-3">
-              <div className="col-2" />
-              <div className="col-2">
-                <img src={wishlistItem.image} width={120} />
-              </div>
+      {wishlistlength === 0 ? (
+        <h2 className="k3">Wishlist Empty</h2>
+      ) : (
+        WISHLIST?.map((wishlistItem, wishlistindex) => {
+          return (
+            <div className="wishlist">
+              <div className="row mt-3">
+                <div className="col-2" />
+                <div className="col-2">
+                  <img src={wishlistItem.image} width={120} />
+                </div>
 
-              <div className="col-2">
-                <span className="mt-5"> {wishlistItem.name} </span>
-              </div>
+                <div className="col-2">
+                  <span className="mt-5"> {wishlistItem.name} </span>
+                </div>
 
-              {/* <span> {wishlistItem.quantity} </span> */}
+                {/* <span> {wishlistItem.quantity} </span> */}
 
-              {/* <button
+                {/* <button
                   class="btn btn-success ms-1"
                   onClick={() => {
                     const _WISHLIST = WISHLIST.map((item, index) => {
@@ -46,22 +58,28 @@ function WishlistList({ addToCart }) {
                   +
                 </button> */}
 
-              <div className="col-1">
-                <span> Rs. {wishlistItem.price} </span>
-              </div>
-              <div className="col-1">
-                <button
-                  className="btn btn-outline-danger cart_btn"
-                  onClick={() => addToCart(wishlistItem)}
-                >
-                  Add to Cart
-                </button>
+                <div className="col-1">
+                  <span> Rs. {wishlistItem.price} </span>
+                </div>
+                <div className="col-2">
+                  <button
+                    className="btn btn-outline-danger cart_btn"
+                    onClick={() => addToCart(wishlistItem)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+
+                <div className="col-1">
+                  <button className="btn btn-outline-danger cart_btn">
+                    Remove from Wishlist
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-
+          );
+        })
+      )}
       {/* <div className="row">
         <div className="col-6" />
         <div className="col-1">
@@ -85,6 +103,16 @@ function WishlistList({ addToCart }) {
           <a href="/customerHome">
             <button className="btn btn-warning">Continue Shopping</button>
           </a>
+        </div>
+        <div className="col-2" />
+        <div className="col-2">
+          {wishlistlength !== 0 ? (
+            <button className="btn btn-danger" onClick={deletewishlist}>
+              Clear Wishlist
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

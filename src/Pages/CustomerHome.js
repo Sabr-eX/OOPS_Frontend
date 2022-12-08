@@ -5,6 +5,8 @@ import Pagination from "./Pagination";
 import ToTopBtn from "./ToTopBtn";
 import Footer from "./Footer";
 import Product from "./Product";
+// import { ToastContainer, toast } from "react-toastify";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -74,6 +76,7 @@ export default function CustomerHome() {
   //   )
 
   const [product, setProduct] = useState();
+  // const notify = () => toast("Wow so easy!");
 
   useEffect(() => {
     const getProducts = async () => {

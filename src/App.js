@@ -7,11 +7,11 @@ import History from "./Pages/History";
 import Payment from "./Pages/Payment";
 import Wishlist from "./Pages/Wishlist";
 import Profilepagecomponent from "./Pages/profilepage";
-import Confirmation from './Pages/Confirmation';
+import Confirmation from "./Pages/Confirmation";
 import Wallet from "./Pages/Wallet";
-
+import bootstrap from "bootstrap";
 import NotFound from "./components/NotFound";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./slices/authSlice";
@@ -50,10 +50,13 @@ function App() {
   // useEffect(() => {
   //   dispatch(loadUser(null));
   // }, [dispatch]);
+  // const toastTrigger = document.getElementById("liveToastBtn");
+  // const toastLiveExample = document.getElementById("liveToast");
+
   return (
     <div className="App">
       <BrowserRouter>
-        <ToastContainer />
+        {/* <ToastContainer /> */}
         {/* <NavBar /> */}
         <Routes>
           <Route path="/CustomerHome" element={<CustomerHome />} />

@@ -14,7 +14,7 @@ function CartList() {
 
   useEffect(() => {
     setcartlength(CART.length);
-  });
+  }, [CART]);
 
   function deleteCart() {
     setCART([]);
