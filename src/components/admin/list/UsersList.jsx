@@ -22,7 +22,7 @@ async function handleDelete(id) {
   let item = {id}
   console.log(id)
   // let result = await fetch(
-  //   "https://gada-electronics.up.railway.app/products/delete/"+id,
+  //   "https://gada-electronics.up.railway.app/products/user/"+id,
   //   {
   //     method: "POST",
   //     headers: {
@@ -70,12 +70,12 @@ return (
             </td> */}
             <td>{(product.role==="ADMIN")?(<Admin>Admin</Admin>):((product.role==="MANAGER")?(<Manager>Manager</Manager>):(<Customer>Customer</Customer>))}</td>
             <td>
-            <button type="button" onClick={handleDelete(product.id)} class="btn btn-success btn-xsm me-2">
-                Delete
+            <button type="button" class="btn btn-success btn-xsm ">
+                Edit
               </button>
               </td>
             <td>
-              <button type="button" class="btn btn-danger btn-xsm me-2">
+              <button type="button" onClick={handleDelete(product.id)} class="btn btn-danger btn-xsm me-2">
                 Delete
               </button>
             </td>

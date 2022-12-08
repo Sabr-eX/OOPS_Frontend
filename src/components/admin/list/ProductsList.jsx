@@ -22,18 +22,18 @@ useEffect(() => {
 async function handleDelete(id) {
   let item = {id}
   console.log(id)
-  let result = await fetch(
-    "https://gada-electronics.up.railway.app/products/delete/"+id,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(item)
-    }
-    );
-    result = await result.json();
+  // let result = await fetch(
+  //   "https://gada-electronics.up.railway.app/products/delete/"+id,
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //     },
+  //     body: JSON.stringify(item)
+  //   }
+  //   );
+  //   result = await result.json();
 }
 
 

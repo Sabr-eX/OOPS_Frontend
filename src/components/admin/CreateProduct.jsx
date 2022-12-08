@@ -13,7 +13,8 @@ const CreateProduct = () => {
   const [quantity, setQty] = useState("");
   const [discount, setDiscount] = useState("");
 
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+    // e.preventDefault();
     let item = {name,price,discount,image,description,quantity}
     console.log(item)
     let result = await fetch(
@@ -28,50 +29,58 @@ const CreateProduct = () => {
       }
       );
       result = await result.json();
+
+
   }
 
   return (
     <StyledCreateProduct>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm>
         <h3>Create a Product</h3>
         <input
           type="text"
           placeholder="Name"
+          value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
         <input
           type="text"
+          value={image}
           placeholder="Image URL"
           onChange={(e) => setImg(e.target.value)}
           required
         />
         <input
           type="number"
+          value={discount}
           placeholder="Discount"
           onChange={(e) => setDiscount(e.target.value)}
           required
         />
         <input
           type="number"
+          value={price}
           placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
           required
         />
         <input
           type="number"
+          value={quantity}
           placeholder="Quantity"
           onChange={(e) => setQty(e.target.value)}
           required
         />
         <input
           type="text"
+          value={description}
           placeholder="Short Description"
           onChange={(e) => setDesc(e.target.value)}
           required
         />
 
-        <PrimaryButton type="submit" onClick={handleSubmit()}>
+        <PrimaryButton type="submit" onClick={handleSubmit}>
         Submit
         </PrimaryButton>
       </StyledForm>
