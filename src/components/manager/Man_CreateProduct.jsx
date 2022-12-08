@@ -1,369 +1,144 @@
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import styled from "styled-components";
-// import { PrimaryButton } from "./CommonStyled";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import { PrimaryButton } from "./CommonStyled";
 
-// const Man_CreateProduct = () => {
-//   const [brand, setBrand] = useState("");
-//   const [name, setName] = useState("");
-//   const [image, setImg] = useState("");
-//   const [price, setPrice] = useState("");
-//   const [desc, setDesc] = useState("");
+const CreateProduct = () => {
+  // const [productImg, setProductImg] = useState("");
+  const [name, setName] = useState("");
+  const [image, setImg] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDesc] = useState("");
+  const [quantity, setQty] = useState("");
+  const [discount, setDiscount] = useState("");
 
-//   const handleSubmit = async (e) => {
-//     // e.preventDefault();
-//     // dispatch(
-//     //   productsCreate({
-//     //     name,
-//     //     image,
-//     //     brand,
-//     //     price,
-//     //     desc,
-//     //   })
-//     // );
-//   };
+  async function handleSubmit(e) {
+    // e.preventDefault();
+    let item = { name, price, discount, image, description, quantity };
+    console.log(item);
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/products/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(item),
+      }
+    );
+    result = await result.json();
+  }
 
-//   return (
-//     <StyledCreateProduct>
-//       <StyledForm onSubmit={handleSubmit}>
-//         <h3>Create a Product</h3>
-//         <input
-//           type="text"
-//           placeholder="Name"
-//           onChange={(e) => setName(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Image URL"
-//           onChange={(e) => setImg(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="number"
-//           placeholder="Price"
-//           onChange={(e) => setPrice(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Short Description"
-//           onChange={(e) => setDesc(e.target.value)}
-//           required
-//         />
+  return (
+    <StyledCreateProduct>
+      <StyledForm>
+        <h3>Create a Product</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          value={image}
+          placeholder="Image URL"
+          onChange={(e) => setImg(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          value={discount}
+          placeholder="Discount"
+          onChange={(e) => setDiscount(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          value={price}
+          placeholder="Price"
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          value={quantity}
+          placeholder="Quantity"
+          onChange={(e) => setQty(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          value={description}
+          placeholder="Short Description"
+          onChange={(e) => setDesc(e.target.value)}
+          required
+        />
 
-//         <PrimaryButton type="submit">
-//           {createStatus === "pending" ? "Submitting" : "Submit"}
-//         </PrimaryButton>
-//       </StyledForm>
-//       <ImagePreview>
-//         {image ? (
-//           <>
-//             <img src={image} alt="error!" />
-//           </>
-//         ) : (
-//           <p>Product image upload preview will appear here!</p>
-//         )}
-//       </ImagePreview>
-//     </StyledCreateProduct>
-//   );
-// };
+        <PrimaryButton type="submit" onClick={handleSubmit}>
+          Submit
+        </PrimaryButton>
+      </StyledForm>
+      <ImagePreview>
+        {image ? (
+          <>
+            <img src={image} alt="error!" />
+          </>
+        ) : (
+          <p>Product image upload preview will appear here!</p>
+        )}
+      </ImagePreview>
+    </StyledCreateProduct>
+  );
+};
 
-// export default Man_CreateProduct;
+export default CreateProduct;
 
-// const StyledForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   max-width: 300px;
-//   margin-top: 2rem;
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin-top: 2rem;
 
-//   select,
-//   input {
-//     padding: 7px;
-//     min-height: 30px;
-//     outline: none;
-//     border-radius: 5px;
-//     border: 1px solid rgb(182, 182, 182);
-//     margin: 0.3rem 0;
+  select,
+  input {
+    padding: 7px;
+    min-height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 182, 182);
+    margin: 0.3rem 0;
 
-//     &:focus {
-//       border: 2px solid rgb(0, 208, 255);
-//     }
-//   }
+    &:focus {
+      border: 2px solid rgb(0, 208, 255);
+    }
+  }
 
-//   select {
-//     color: rgb(95, 95, 95);
-//   }
-// `;
+  select {
+    color: rgb(95, 95, 95);
+  }
+`;
 
-// const StyledCreateProduct = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-// `;
+const StyledCreateProduct = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-// const ImagePreview = styled.div`
-//   margin: 2rem 0 2rem 2rem;
-//   padding: 2rem;
-//   border: 1px solid rgb(183, 183, 183);
-//   max-width: 300px;
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 2rem;
-//   color: rgb(78, 78, 78);
+const ImagePreview = styled.div`
+  margin: 2rem 0 2rem 2rem;
+  padding: 2rem;
+  border: 1px solid rgb(183, 183, 183);
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: rgb(78, 78, 78);
 
-//   img {
-//     max-width: 100%;
-//   }
-// `;
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import styled from "styled-components";
-// import { PrimaryButton } from "./CommonStyled";
-// import { productsCreate } from "../../slices/productsSlice";
-
-// const CreateProduct = () => {
-//   const dispatch = useDispatch();
-//   const { createStatus } = useSelector((state) => state.products);
-
-//   // const [productImg, setProductImg] = useState("");
-//   const [brand, setBrand] = useState("");
-//   const [name, setName] = useState("");
-//   const [image, setImg] = useState("");
-//   const [price, setPrice] = useState("");
-//   const [desc, setDesc] = useState("");
-
-//   const handleSubmit = async (e) => {
-//     // e.preventDefault();
-//     // dispatch(
-//     //   productsCreate({
-//     //     name,
-//     //     image,
-//     //     brand,
-//     //     price,
-//     //     desc,
-//     //   })
-//     // );
-//   };
-
-//   return (
-//     <StyledCreateProduct>
-//       <StyledForm onSubmit={handleSubmit}>
-//         <h3>Create a Product</h3>
-//         <input
-//           type="text"
-//           placeholder="Name"
-//           onChange={(e) => setName(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Image URL"
-//           onChange={(e) => setImg(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="number"
-//           placeholder="Price"
-//           onChange={(e) => setPrice(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Short Description"
-//           onChange={(e) => setDesc(e.target.value)}
-//           required
-//         />
-
-//         <PrimaryButton type="submit">
-//           {createStatus === "pending" ? "Submitting" : "Submit"}
-//         </PrimaryButton>
-//       </StyledForm>
-//       <ImagePreview>
-//         {image ? (
-//           <>
-//             <img src={image} alt="error!" />
-//           </>
-//         ) : (
-//           <p>Product image upload preview will appear here!</p>
-//         )}
-//       </ImagePreview>
-//     </StyledCreateProduct>
-//   );
-// };
-
-// export default CreateProduct;
-
-// const StyledForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   max-width: 300px;
-//   margin-top: 2rem;
-
-//   select,
-//   input {
-//     padding: 7px;
-//     min-height: 30px;
-//     outline: none;
-//     border-radius: 5px;
-//     border: 1px solid rgb(182, 182, 182);
-//     margin: 0.3rem 0;
-
-//     &:focus {
-//       border: 2px solid rgb(0, 208, 255);
-//     }
-//   }
-
-//   select {
-//     color: rgb(95, 95, 95);
-//   }
-// `;
-
-// const StyledCreateProduct = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-// `;
-
-// const ImagePreview = styled.div`
-//   margin: 2rem 0 2rem 2rem;
-//   padding: 2rem;
-//   border: 1px solid rgb(183, 183, 183);
-//   max-width: 300px;
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 2rem;
-//   color: rgb(78, 78, 78);
-
-//   img {
-//     max-width: 100%;
-//   }
-// `;
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import styled from "styled-components";
-// import { PrimaryButton } from "./CommonStyled";
-// import { productsCreate } from "../../slices/productsSlice";
-
-// const CreateProduct = () => {
-//   const dispatch = useDispatch();
-//   const { createStatus } = useSelector((state) => state.products);
-
-//   // const [productImg, setProductImg] = useState("");
-//   const [brand, setBrand] = useState("");
-//   const [name, setName] = useState("");
-//   const [image, setImg] = useState("");
-//   const [price, setPrice] = useState("");
-//   const [desc, setDesc] = useState("");
-
-//   const handleSubmit = async (e) => {
-//     // e.preventDefault();
-//     // dispatch(
-//     //   productsCreate({
-//     //     name,
-//     //     image,
-//     //     brand,
-//     //     price,
-//     //     desc,
-//     //   })
-//     // );
-//   };
-
-//   return (
-//     <StyledCreateProduct>
-//       <StyledForm onSubmit={handleSubmit}>
-//         <h3>Create a Product</h3>
-//         <input
-//           type="text"
-//           placeholder="Name"
-//           onChange={(e) => setName(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Image URL"
-//           onChange={(e) => setImg(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="number"
-//           placeholder="Price"
-//           onChange={(e) => setPrice(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Short Description"
-//           onChange={(e) => setDesc(e.target.value)}
-//           required
-//         />
-
-//         <PrimaryButton type="submit">
-//           {createStatus === "pending" ? "Submitting" : "Submit"}
-//         </PrimaryButton>
-//       </StyledForm>
-//       <ImagePreview>
-//         {image ? (
-//           <>
-//             <img src={image} alt="error!" />
-//           </>
-//         ) : (
-//           <p>Product image upload preview will appear here!</p>
-//         )}
-//       </ImagePreview>
-//     </StyledCreateProduct>
-//   );
-// };
-
-// export default CreateProduct;
-
-// const StyledForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   max-width: 300px;
-//   margin-top: 2rem;
-
-//   select,
-//   input {
-//     padding: 7px;
-//     min-height: 30px;
-//     outline: none;
-//     border-radius: 5px;
-//     border: 1px solid rgb(182, 182, 182);
-//     margin: 0.3rem 0;
-
-//     &:focus {
-//       border: 2px solid rgb(0, 208, 255);
-//     }
-//   }
-
-//   select {
-//     color: rgb(95, 95, 95);
-//   }
-// `;
-
-// const StyledCreateProduct = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-// `;
-
-// const ImagePreview = styled.div`
-//   margin: 2rem 0 2rem 2rem;
-//   padding: 2rem;
-//   border: 1px solid rgb(183, 183, 183);
-//   max-width: 300px;
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 2rem;
-//   color: rgb(78, 78, 78);
-
-//   img {
-//     max-width: 100%;
-//   }
-// `;
+  img {
+    max-width: 100%;
+  }
+`;
