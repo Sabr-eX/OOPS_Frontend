@@ -12,11 +12,11 @@ const CreateProduct = () => {
 console.log(state);
 
 async function handleSubmit(e) {
-  // e.preventDefault();
-  let item = { name, price, discount, image, description, quantity };
-  console.log(item);
+  e.preventDefault();
+  let item = { name, description, quantity, price, delivery , discount, image };
+  console.log(state.id);
   let result = await fetch(
-    "https://gada-electronics.up.railway.app/edit/"+state.id,
+    "https://gada-electronics.up.railway.app/products/edit/"+state.id,
     {
       method: "POST",
       headers: {
@@ -37,6 +37,8 @@ async function handleSubmit(e) {
   const [description, setDesc] = useState(state.description);
   const [quantity, setQty] = useState(state.quantity);
   const [discount, setDiscount] = useState(state.discount);
+  const [delivery, setDelivery] = useState(state.delivery);
+  const [id, setTd] = useState(state.id);
 
   return (
     <StyledCreateProduct>
@@ -75,6 +77,13 @@ async function handleSubmit(e) {
           value={quantity}
           placeholder="Quantity"
           onChange={(e) => setQty(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          value={delivery}
+          placeholder="Delivery"
+          onChange={(e) => setDelivery(e.target.value)}
           required
         />
         <input
