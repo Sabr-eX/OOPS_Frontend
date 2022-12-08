@@ -121,12 +121,12 @@ export default function () {
           <div className="row">
             <div className="col-5">
               <Link to="/adminsignin">
-                <button className="btn btn-danger adm">Login as Admin</button>
+                <button className="btn btn-danger adm">Admin Login</button>
               </Link>
             </div>
             <div className="col-7">
               <Link to="/managersignin">
-                <button className="btn btn-danger mgr">Login as Manager</button>
+                <button className="btn btn-danger mgr">Manager Login</button>
               </Link>
             </div>
 
