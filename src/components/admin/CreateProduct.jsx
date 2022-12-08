@@ -4,17 +4,17 @@ import styled from "styled-components";
 import { PrimaryButton } from "./CommonStyled";
 
 const CreateProduct = () => {
-  const dispatch = useDispatch();
-  const { createStatus } = useSelector((state) => state.products);
 
   // const [productImg, setProductImg] = useState("");
   const [name, setName] = useState("");
   const [image, setImg] = useState("");
   const [price, setPrice] = useState("");
-  const [desc, setDesc] = useState("");
+  const [description, setDesc] = useState("");
+  const [quantity, setQty] = useState("");
+  const [discount, setDiscount] = useState("");
 
   async function handleSubmit() {
-    let item = {name,image,price,desc}
+    let item = {name,price,discount,image,description,quantity}
     console.log(item)
     let result = await fetch(
       "https://gada-electronics.up.railway.app/products/create",
@@ -48,8 +48,20 @@ const CreateProduct = () => {
         />
         <input
           type="number"
+          placeholder="Discount"
+          onChange={(e) => setDiscount(e.target.value)}
+          required
+        />
+        <input
+          type="number"
           placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          placeholder="Quantity"
+          onChange={(e) => setQty(e.target.value)}
           required
         />
         <input
@@ -59,8 +71,8 @@ const CreateProduct = () => {
           required
         />
 
-        <PrimaryButton type="submit">
-          {createStatus === "pending" ? "Submitting" : "Submit"}
+        <PrimaryButton type="submit" onClick={handleSubmit()}>
+        Submit
         </PrimaryButton>
       </StyledForm>
       <ImagePreview>
