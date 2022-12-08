@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PrimaryButton } from "./CommonStyled";
-import { productsCreate } from "../../slices/productsSlice";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -15,18 +13,22 @@ const CreateProduct = () => {
   const [price, setPrice] = useState("");
   const [desc, setDesc] = useState("");
 
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // dispatch(
-    //   productsCreate({
-    //     name,
-    //     image,
-    //     brand,
-    //     price,
-    //     desc,
-    //   })
-    // );
-  };
+  async function handleSubmit() {
+    let item = {name,image,price,desc}
+    console.log(item)
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/products/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(item)
+      }
+      );
+      result = await result.json();
+  }
 
   return (
     <StyledCreateProduct>

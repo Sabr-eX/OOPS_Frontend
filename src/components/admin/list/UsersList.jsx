@@ -18,6 +18,22 @@ useEffect(() => {
   getProducts();
 }, [])
 
+async function handleDelete(id) {
+  let item = {id}
+  console.log(id)
+  // let result = await fetch(
+  //   "https://gada-electronics.up.railway.app/products/delete/"+id,
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //     },
+  //     body: JSON.stringify(item)
+  //   }
+  //   );
+  //   result = await result.json();
+}
 
 return (
   <div style={{ height: 400, width: "100%" }}>
@@ -32,6 +48,7 @@ return (
             {/* <th scope="col">Price</th> */}
             {/* <th scope="col">Edit</th> */}
             <th scope="col">Role</th>
+            <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
@@ -52,6 +69,11 @@ return (
               </button>
             </td> */}
             <td>{(product.role==="ADMIN")?(<Admin>Admin</Admin>):((product.role==="MANAGER")?(<Manager>Manager</Manager>):(<Customer>Customer</Customer>))}</td>
+            <td>
+            <button type="button" onClick={handleDelete(product.id)} class="btn btn-success btn-xsm me-2">
+                Delete
+              </button>
+              </td>
             <td>
               <button type="button" class="btn btn-danger btn-xsm me-2">
                 Delete
