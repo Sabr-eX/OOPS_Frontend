@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader, MDBCheckbox, MDBCol, MDBInput, MDBListGroup, MDBListGroupItem, MDBRow, MDBTextArea, MDBTypography } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 export default function Basic() {
 
@@ -86,8 +87,9 @@ export default function Basic() {
                   {/* <span><strong>Available Balance</strong></span> */}
                 </MDBListGroupItem>
               </MDBListGroup>
+              <Link to = '/confirmation'>
               <button className='btn btn-primary'>Confirm Order</button>
-              
+              </Link>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

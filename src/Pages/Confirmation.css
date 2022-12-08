@@ -1,0 +1,30 @@
+.main{
+    /* background-color: peachpuff; */
+    height:100vh !important;
+    margin-top: 0vh !important;
+}
+.heading{
+    margin-top: 15vh;
+}
+
+.heading2{
+    margin-top:10vh
+}
+
+
+
+.b1{
+    margin-top: 15vh;
+    margin-left: 5px !important;
+    margin-right:5px !important;
+}
+.b2{
+    margin-top: 15vh;
+    margin-left: 5px !important;
+    margin-right:5px !important;
+}
+.b3{
+    margin-top:15vh;
+    margin-left: 5px !important;
+    margin-right:5px !important;
+}
