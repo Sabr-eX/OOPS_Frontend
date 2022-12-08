@@ -8,17 +8,21 @@ import Transactions from "./summary-components/Transactions";
 import AllTimeData from "./summary-components/AllTimeData";
 
 const Summary = () => {
-  const [report, setReport] = useState({});
+  const [report, setReport] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchReport() {
+      setLoading(true);
       try {
         const res = await axios.get(
           `https://gada-electronics.up.railway.app/admin/reports`
         );
         setReport(res.data);
+        setLoading(false);
       } catch (err) {
         console.log(err);
+        setLoading(false);
       }
     }
     fetchReport();
@@ -67,11 +71,15 @@ const Summary = () => {
             <p>Performance of our online supermarket</p>
           </Title>
 
-          <WidgetWrapper>
-            {data?.map((data, index) => (
-              <Widget key={index} data={data} />
-            ))}
-          </WidgetWrapper>
+          {loading ? (
+            <Loader>Loading Overview...</Loader>
+          ) : (
+            <WidgetWrapper>
+              {data?.map((data, index) => (
+                <Widget key={index} data={data} />
+              ))}
+            </WidgetWrapper>
+          )}
         </Overview>
         <Chart />
       </MainStats>
@@ -125,4 +133,8 @@ const SideStats = styled.div`
   flex-direction: column;
   margin-left: 2rem;
   width: 100%;
+`;
+
+const Loader = styled.p`
+  margin-top: 2rem;
 `;

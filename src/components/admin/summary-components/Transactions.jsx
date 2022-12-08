@@ -20,6 +20,7 @@ const Transactions = () => {
         );
 
         setOrders(res.data);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -31,7 +32,7 @@ const Transactions = () => {
   return (
     <StyledTransactions>
       {isLoading ? (
-        <p>Transactions loading...</p>
+        <p>Loading Transactions...</p>
       ) : (
         <>
           <h3>Latest Transactions</h3>
