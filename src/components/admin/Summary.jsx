@@ -63,7 +63,6 @@ const Summary = () => {
       title: "Users",
       color: "rgb(102, 108, 255)",
       bgColor: "rgba(102, 108, 255, 0.12)",
-      percentage: 30,
     },
     {
       icon: <FaClipboard />,
@@ -72,7 +71,6 @@ const Summary = () => {
       title: "Orders",
       color: "rgb(38, 198, 149)",
       bgColor: "rgba(38, 198, 149, 0.12)",
-      percentage: 20,
     },
     {
       icon: <FaChartBar />,
@@ -81,7 +79,6 @@ const Summary = () => {
       title: "Earnings",
       color: "rgb(258, 181, 40)",
       bgColor: "rgba(258, 181, 40, 0.12)",
-      percentage: 60,
     },
   ];
   return (

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Outlet, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { FaUser,FaStore,FaClipboard, FaTachometerAlt } from "react-icons/fa";
+import { FaUser, FaStore, FaClipboard, FaTachometerAlt } from "react-icons/fa";
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
@@ -18,7 +18,7 @@ const Dashboard = () => {
           }
           to="/admin/summary"
         >
-        <FaTachometerAlt/>  Summary
+          <FaTachometerAlt /> Summary
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -26,7 +26,7 @@ const Dashboard = () => {
           }
           to="/admin/products"
         >
-        <FaStore/>  Products
+          <FaStore /> Products
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -34,7 +34,7 @@ const Dashboard = () => {
           }
           to="/admin/orders"
         >
-        <FaClipboard/>  Orders
+          <FaClipboard /> Orders
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -42,7 +42,7 @@ const Dashboard = () => {
           }
           to="/admin/users"
         >
-        <FaUser/>  Users
+          <FaUser /> Users
         </NavLink>
       </SideNav>
       <Content>
@@ -80,13 +80,13 @@ const SideNav = styled.div`
     text-decoration: none;
     margin-bottom: 1rem;
     font-size: 14px;
-    display:flex;
+    display: flex;
     align-items: center;
-    font-weight:700;
+    font-weight: 700;
 
-    svg{
+    svg {
       margin-right: 0.5rem;
-      font-size:18px;
+      font-size: 18px;
     }
   }
 `;
