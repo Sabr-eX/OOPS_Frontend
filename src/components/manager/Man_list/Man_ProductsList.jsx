@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 // import EditProduct from "../EditProduct";
 
 export default function Man_ProductsList() {
+  const navigate = useNavigate();
   const [product, setProduct] = useState();
 
   useEffect(() => {
@@ -20,6 +22,29 @@ export default function Man_ProductsList() {
     getProducts();
   }, []);
 
+  async function handleDelete(id) {
+    let item = { id };
+    console.log(id);
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/products/delete/" + id,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(item),
+      }
+    );
+    // console.log()
+    let newProductResponse = await axios.get(
+      "https://gada-electronics.up.railway.app/products/all"
+    );
+    newProductResponse = await newProductResponse.data;
+    console.log(newProductResponse);
+    setProduct(newProductResponse);
+  }
+
   return (
     <div>
       <div className="d-flex flex-column">
@@ -32,7 +57,8 @@ export default function Man_ProductsList() {
               <th scope="col">Product Name</th>
 
               <th scope="col">Price</th>
-              {/* <th scope="col">Edit</th> */}
+              <th scope="col">Quantity</th>
+              <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
@@ -47,13 +73,27 @@ export default function Man_ProductsList() {
                   <td>{product.name}</td>
 
                   <td>₹ {product.price}</td>
-                  {/* <td>
-                <button type="button" class="btn btn-success btn-xsm me-2">
-                  Add
-                </button>
-              </td> */}
+                  <td>{product.quantity}</td>
+
                   <td>
-                    <button type="button" class="btn btn-danger btn-xsm me-2">
+                    <button
+                      type="button"
+                      class="btn btn-success btn-xsm me-2"
+                      onClick={() =>
+                        navigate("/manager/products/edit-product", {
+                          state: product,
+                        })
+                      }
+                    >
+                      Edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="submit"
+                      onClick={() => handleDelete(product.id)}
+                      class="btn btn-danger btn-xsm me-2"
+                    >
                       Delete
                     </button>
                   </td>

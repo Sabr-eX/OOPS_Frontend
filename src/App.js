@@ -63,8 +63,8 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/profile" element={<Profilepagecomponent />} />
-          <Route path="/confirmation" element={<Confirmation/>}/>
-          <Route path="/wallet" element={<Wallet/>}/>
+          <Route path="/confirmation" element={<Confirmation />} />
+          <Route path="/wallet" element={<Wallet />} />
 
           <Route
             path="/auth"
@@ -104,7 +104,7 @@ function App() {
           <Route path="/order/:id" element={<Order />} />
           {/* <Route path="/admin/users" element={<Users />}/> */}
           <Route path="/admin" element={<Dashboard />}>
-          <Route path="users/:id" element={<UserProfile />} />
+            <Route path="users/:id" element={<UserProfile />} />
             <Route path="products" element={<Products />}>
               <Route index element={<ProductsList />} />
               <Route path="create-product" element={<CreateProduct />} />
@@ -112,18 +112,19 @@ function App() {
             </Route>
             <Route path="summary" element={<Summary />} />
 
-            <Route path="users" element={<Users />} >
+            <Route path="users" element={<Users />}>
               <Route index element={<UsersList />} />
               <Route path="edit" element={<EditUser />} />
             </Route>
 
             <Route path="orders" element={<Orders />} />
           </Route>
-          
+
           <Route path="/manager" element={<Man_Dashboard />}>
             <Route path="products" element={<Man_Products />}>
               <Route index element={<Man_ProductsList />} />
               <Route path="create-product" element={<Man_CreateProduct />} />
+              <Route path="edit-product" element={<EditProduct />} />
             </Route>
             <Route path="summary" element={<Man_Summary />} />
             <Route path="orders" element={<Man_Orders />} />

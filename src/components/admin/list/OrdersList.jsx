@@ -31,7 +31,7 @@ export default function OrdersList() {
 
             <th scope="col">Image</th>
             <th scope="col">Price</th>
-            <th scope="col">Quantiy</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
@@ -54,7 +54,7 @@ export default function OrdersList() {
                   ) : order.status === "SHIPPED" ? (
                     <Shipped>SHIPPED</Shipped>
                   ) : order.status === "PENDING" ? (
-                    <Pending>SHIPPED</Pending>
+                    <Pending>PENDING</Pending>
                   ) : (
                     <Cancelled>CANCELLED</Cancelled>
                   )}

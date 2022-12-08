@@ -5,41 +5,44 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import EditProduct from "../EditProduct";
 
-
 export default function ProductsList() {
   const navigate = useNavigate();
   const [product, setProduct] = useState();
 
   useEffect(() => {
     const getProducts = async () => {
-      await axios.get('https://gada-electronics.up.railway.app/products/all')
-        .then((res) => { setProduct(res?.data); })
-        .then((res) => console.log(res?.data))
-    }
+      await axios
+        .get("https://gada-electronics.up.railway.app/products/all")
+        .then((res) => {
+          setProduct(res?.data);
+        })
+        .then((res) => console.log(res?.data));
+    };
     getProducts();
-  }, [])
+  }, []);
 
   async function handleDelete(id) {
-    let item = { id }
-    console.log(id)
+    let item = { id };
+    console.log(id);
     let result = await fetch(
       "https://gada-electronics.up.railway.app/products/delete/" + id,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          Accept: "application/json",
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(item),
       }
     );
     // console.log()
-    let newProductResponse = await axios.get('https://gada-electronics.up.railway.app/products/all');
+    let newProductResponse = await axios.get(
+      "https://gada-electronics.up.railway.app/products/all"
+    );
     newProductResponse = await newProductResponse.data;
     console.log(newProductResponse);
     setProduct(newProductResponse);
   }
-
 
   return (
     <div>
@@ -53,7 +56,7 @@ export default function ProductsList() {
               <th scope="col">Product Name</th>
 
               <th scope="col">Price</th>
-              <th scope="col">Quantiy</th>
+              <th scope="col">Quantity</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
@@ -61,7 +64,7 @@ export default function ProductsList() {
           <tbody>
             {product?.map((product) => {
               return (
-                <tr>
+                <tr style={{ height: "5px", fontSize: "17px" }}>
                   <td>{product.id}</td>
                   <ImageContainer>
                     <img src={product?.image} alt="" />
@@ -103,28 +106,28 @@ export default function ProductsList() {
 }
 
 const ImageContainer = styled.div`
-    img{
-      height: 40px;
-    }
-  `;
+  img {
+    height: 40px;
+  }
+`;
 
 const Actions = styled.div`
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  button{
-    border:none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  button {
+    border: none;
     outline: none;
-    padding:3px 5px;
-    color:white;
-    border-radius:3px;
-    cursor:pointer;
+    padding: 3px 5px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
   }
-  `;
+`;
 
 const Delete = styled.button`
-    background-color:rgb(255,77,73);
-  `;
+  background-color: rgb(255, 77, 73);
+`;
 const View = styled.button`
-    background-color:rgb(114,225,40);
-  `;
+  background-color: rgb(114, 225, 40);
+`;

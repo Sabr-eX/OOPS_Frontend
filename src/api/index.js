@@ -12,7 +12,6 @@
 //     return fetchData(`${API_URL}/category/${param}`);
 // }
 
-
 // const SERVER_URL = 'https://gada-electronics.up.railway.app';
 
 // export const getProducts = async () => {
@@ -26,15 +25,14 @@
 //     }
 // }
 
-const API_URL = 'https://gada-electronics.up.railway.app/orders/user/'
+const API_URL = "https://gada-electronics.up.railway.app/orders/user/";
 
-const fetchData = async (url) =>{
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-export const fetchProducts = (userID, param = "all" ) => {
-    if(param === "all") return fetchData(API_URL + userID);
-    return fetchData(`${API_URL}/category/${param}`);
-}
-
+const fetchData = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};
+export const fetchProducts = (userID, param = "all") => {
+  if (param === "all") return fetchData(API_URL + userID);
+  return fetchData(`${API_URL}/category/${param}`);
+};
