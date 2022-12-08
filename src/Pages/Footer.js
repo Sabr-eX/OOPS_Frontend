@@ -20,7 +20,7 @@ export default class Footer extends Component {
                 </a>
               </li>
               <li className="nav-item mb-2">
-                <a href="/order_history" className="nav-link p-0 text-light">
+                <a href="/wallet" className="nav-link p-0 text-light">
                   My Wallet
                 </a>
               </li>
