@@ -6,7 +6,7 @@ export default class Footer extends Component {
     return (
       <footer className="py-5 foot">
         <div className="row">
-          <div className="col-2">
+          <div className="col-4">
             <h5 className="text-light">Quick Links</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
@@ -42,7 +42,7 @@ export default class Footer extends Component {
             </ul>
           </div>
 
-          <div className="col-2">
+          <div className="col-4">
             <h5 className="text-light">About</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
@@ -66,7 +66,7 @@ export default class Footer extends Component {
             </ul>
           </div>
 
-          <div className="col-2">
+          <div className="col-4">
             <h5 className="text-light">Contact Us</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
@@ -90,7 +90,7 @@ export default class Footer extends Component {
             </ul>
           </div>
 
-          <div className="col-4 offset-1">
+          {/* <div className="col-4 offset-1">
             <form>
               <h5 className="text-light">Subscribe to our newsletter</h5>
               <p className="text-light">
@@ -111,7 +111,7 @@ export default class Footer extends Component {
                 </button>
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
 
         {/* <div className="d-flex justify-content-between py-4 my-4 border-top">
