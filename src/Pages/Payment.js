@@ -58,7 +58,7 @@ export default function Basic() {
       const tempObject = {
         "id": cart[i].id,
         "quantity": cart[i]?.quantity,
-        "price": Math.round(cart[i]?.price * ((100 - cart[i]?.discount) / 100))
+        "price": Math.round(cart[i]?.price * ((100 - cart[i]?.discount) / 100))
       }
       if (tempObject.quantity == 0) {
         continue;
@@ -83,6 +83,7 @@ export default function Basic() {
 
       localStorage.setItem('user-info', JSON.stringify(newUserInfo))
       setError(false);
+      // localStorage.removeItem("cart");
       navigate('/confirmation');
       // Completed
     }
@@ -97,12 +98,79 @@ export default function Basic() {
     console.log(result);
 
   }
+  const cartfromlocal = JSON.parse(localStorage.getItem("cart") || "[]");
+  const [CART, setCART] = useState(cartfromlocal)
 
   return (
-    <div className="mx-auto mt-5" style={{ maxWidth: '900px' }}>
-      <Navbar />
-      <MDBRow>
-        {/* <MDBCol md="8" className="mb-4">
+
+    
+    <div>
+
+<Navbar />
+      <div className='k'>
+        <h1 className='k2'>Confirm Order</h1>
+
+
+
+        <div className='row'>
+
+          <div className='col-9'>
+            {
+              CART?.map((cartItem, cartindex) => {
+                return (
+                  <div className='cart'>
+                    <div className='row mt-3'>
+                      <div className='col-2' />
+                      <div className='col-3'>
+                        <img src={cartItem.image} width={120} />
+                      </div>
+
+                      <div className='col-1'>
+
+                        <span className='mt-5'> {cartItem.name} </span>
+
+                      </div>
+
+                      <div className='col-1'>
+                        <span> {cartItem.quantity} </span>
+                      </div>
+                      <div className='col-1'>
+                        <span> Rs. {cartItem.price * cartItem.quantity} </span></div>
+                    </div>
+
+
+                  </div>
+                )
+              })
+            }
+
+<div className='row'>
+            <div className='col-4' />
+            <div className='col-1'>
+              <p className='para'> Total:</p>  </div>
+            <div className='col-1'><p className='para'> Rs. {
+              CART.map(item => item.price * item.quantity).reduce((total, value) => total + value, 0)
+            }
+            </p></div>
+          </div>
+          </div>
+
+          
+
+
+
+
+
+
+
+          {/* <div className="mx-auto mt-5" style={{ maxWidth: '900px' }}>
+
+          </div > */}
+          
+
+          
+            {/* <MDBRow> */}
+            {/* <MDBCol md="8" className="mb-4">
           <MDBCard className="mb-4">
 
             <MDBCardBody>
@@ -112,7 +180,9 @@ export default function Basic() {
             </MDBCardBody>
           </MDBCard>
         </MDBCol> */}
-        <MDBCol md="4" className="mb-4 box">
+
+
+            {/* <MDBCol md="4" className="mb-4 box">
           <MDBCard className="mb-4">
             <MDBCardHeader className="py-1">
               <MDBTypography tag="h5" className="mb-0">Summary</MDBTypography>
@@ -128,7 +198,7 @@ export default function Basic() {
                     <strong>Wallet Balance</strong>
                   </div>
                   <span><strong>{balance}</strong></span>
-                  {/* <span><strong>Available Balance</strong></span> */}
+                  <span><strong>Available Balance</strong></span>
                   {error &&
                     <h6>
                       {errorMessage}
@@ -142,7 +212,41 @@ export default function Basic() {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-      </MDBRow>
+      </MDBRow> */}
+
+            <div className='col-3'>
+            <div className='cardd'>
+
+              <table class="table ms-5vw">
+                <thead>
+                  <tr>
+                    <td scope="col">Total Amount</td>
+                    <td scope="col">{totalValue}
+                      {error &&
+                        <h6>
+                          {errorMessage}
+                        </h6>
+                      }</td>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Wallet Balance</th>
+                    <th>{balance}</th>
+                  </tr>
+
+                </tbody>
+              </table>
+
+              <button className='btn btn-primary' onClick={request}>Confirm Order</button>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
     </div>
   );
 }
