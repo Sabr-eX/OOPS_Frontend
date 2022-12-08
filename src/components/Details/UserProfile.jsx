@@ -1,156 +1,186 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { setHeaders, url } from "../../slices/api";
-import { useParams, useparams } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { toast } from "react-toastify";
+import { PrimaryButton } from "../admin/CommonStyled";
 
-const UserProfile = () => {
-  const params = useParams();
-
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    isAdmin: false,
-    password: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [updating, setUpdating] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchUser = async () => {
-      try {
-        const res = await axios.get(
-          `${url}/users/find/${params.id}`,
-          setHeaders()
-        );
-
-        setUser({
-          ...res.data,
-          password: "",
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchUser();
-    setLoading(false);
-  }, [params.id]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setUpdating(true);
-    try {
-      const res = await axios.put(
-        `${url}/users/${params.id}`,
-        { ...user },
-        setHeaders()
-      );
-
-      setUser({ ...res.data, password: "" });
-
-      toast.success("profile updated...");
-    } catch (err) {
-      console.log(err);
+const EditUser = () => {
+  // const [productImg, setProductImg] = useState("");
+  let {state} = useLocation();
+  const product = state["product"];
+console.log(state);
+  // let { state } = useLocation();
+  // const product = state["product"];
+async function handleSubmit(e) {
+  e.preventDefault();
+  let item = { name,role,email,phone,balance};
+  console.log(product.id);
+  let result = await fetch(
+    "https://gada-electronics.up.railway.app/users/edit/"+product.id,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(item),
     }
-    setUpdating(false);
-  };
+  );
+  result = await result.json();
+}
+
+
+  // const navigate = useNavigate();
+  const [name, setName] = useState(product.name);
+  const [email, setEmail] = useState(product.email);
+  const [password, setPwd] = useState(product.password);
+  const [role, setRole] = useState(product.role);
+  const [phone, setPhone] = useState(product.phone);
+  const [balance, setBalance] = useState(product.balance);
+  // const [quantity, setQty] = useState(state.quantity);
+  // const [discount, setDiscount] = useState(state.discount);
+  // const [delivery, setDelivery] = useState(state.delivery);
+  const [id, setId] = useState(product.id);
 
   return (
-    <StyledProfile>
-      <ProfileContainer>
-        {loading ? (
-          <p>Loading...</p>
+    
+    <StyledCreateProduct>
+      <StyledForm>
+        <h3>Edit a User</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="ID"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          value={role}
+          placeholder="Role"
+          onChange={(e) => setRole(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          value={phone}
+          placeholder="Phone no"
+          onChange={(e) => setPhone(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          value={balance}
+          placeholder="Balance"
+          onChange={(e) => setBalance(e.target.value)}
+          required
+        />
+        {/* <input
+          type="number"
+          value={price}
+          placeholder="Price"
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        /> */}
+        {/* <input
+          type="number"
+          value={quantity}
+          placeholder="Quantity"
+          onChange={(e) => setQty(e.target.value)}
+          required
+        /> */}
+        {/* <input
+          type="number"
+          value={delivery}
+          placeholder="Delivery"
+          onChange={(e) => setDelivery(e.target.value)}
+          required
+        /> */}
+        {/* <input
+          type="text"
+          value={description}
+          placeholder="Short Description"
+          onChange={(e) => setDesc(e.target.value)}
+          required
+        /> */}
+
+        <PrimaryButton type="submit" onClick={handleSubmit}>
+          Submit
+        </PrimaryButton>
+      </StyledForm>
+      {/* <ImagePreview>
+        {image ? (
+          <>
+            <img src={image} alt="error!" />
+          </>
         ) : (
-          <form onSubmit={handleSubmit}>
-            <h3>User Profile</h3>
-            {user.isAdmin ? (
-              <Admin>Admin</Admin>
-            ) : (
-              <Customer>Customer</Customer>
-            )}
-            <label htmlfor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              value={user.name}
-              onChange={(e) => setUser({ ...user, name: e.target.value })}
-            />
-            <label htmlfor="email">Email:</label>
-            <input
-              type="text"
-              id="email"
-              value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
-            />
-            <label htmlfor="password">Password:</label>
-            <input
-              type="text"
-              id="password"
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
-            />
-            <button>{updating ? "Updating" : "Update Profile"}</button>
-          </form>
+          <p>Product image upload preview will appear here!</p>
         )}
-      </ProfileContainer>
-    </StyledProfile>
+      </ImagePreview> */}
+    </StyledCreateProduct>
   );
 };
 
-export default UserProfile;
+export default EditUser;
 
-const StyledProfile = styled.div`
-  margin: 3rem;
+const StyledForm = styled.form`
   display: flex;
-  justify-content: center;
-`;
+  flex-direction: column;
+  max-width: 300px;
+  margin-top: 2rem;
 
-const ProfileContainer = styled.div`
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  display: flex;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px, 7px, 29px, 0px;
-  border-radius: 5px;
-  padding: 2rem;
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    h3 {
-      margin-bottom: 0.5rem;
+  select,
+  input {
+    padding: 7px;
+    min-height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 182, 182);
+    margin: 0.3rem 0;
+
+    &:focus {
+      border: 2px solid rgb(0, 208, 255);
     }
-    laber {
-      margin-bottom: 0.2rem;
-      color: gray;
-    }
-    input {
-      margin-bottom: 1rem;
-      outline: none;
-      border: none;
-      border-bottom: 1px solid gray;
-    }
+  }
+
+  select {
+    color: rgb(95, 95, 95);
   }
 `;
 
-const Admin = styled.div`
-  color: rgb(253, 181, 40);
-  background: rgb(253, 181, 40, 0.12);
-  padding: 3px 5px;
-  border-radius: 3px;
-  font-size: 14px;
-  margin-bottom: 1rem;
+const StyledCreateProduct = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
-const Customer = styled.div`
-  color: rgb(38, 198, 249);
-  background_color: rgb(38, 198, 249, 0.12);
-  padding: 3px 5px;
-  border-radius: 3px;
-  font-size: 14px;
-  margin-bottom: 1rem;
+const ImagePreview = styled.div`
+  margin: 2rem 0 2rem 2rem;
+  padding: 2rem;
+  border: 1px solid rgb(183, 183, 183);
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: rgb(78, 78, 78);
+
+  img {
+    max-width: 100%;
+  }
 `;

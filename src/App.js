@@ -102,18 +102,21 @@ function App() {
           <Route path="/:productId" element={<ProductDetail />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/order/:id" element={<Order />} />
-          <Route path="/user/:id" element={<UserProfile />} />
+          {/* <Route path="/admin/users" element={<Users />}/> */}
           <Route path="/admin" element={<Dashboard />}>
+          <Route path="users/:id" element={<UserProfile />} />
             <Route path="products" element={<Products />}>
               <Route index element={<ProductsList />} />
               <Route path="create-product" element={<CreateProduct />} />
               <Route path="edit-product" element={<EditProduct />} />
             </Route>
             <Route path="summary" element={<Summary />} />
+
             <Route path="users" element={<Users />} >
               <Route index element={<UsersList />} />
-              <Route path="edit-user" element={<EditUser />} />
+              <Route path="edit" element={<EditUser />} />
             </Route>
+
             <Route path="orders" element={<Orders />} />
           </Route>
           

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UsersList() {
   const navigate = useNavigate();
@@ -96,15 +96,21 @@ export default function UsersList() {
                     )}
                   </td>
                   <td>
-                    <button
+                  <Link to={`/admin/users/${product.id}`} state={{ product: product}}>
+                  <button
                       type="button"
                       class="btn btn-success btn-xsm me-2"
-                      onClick={() =>
-                        navigate("/admin/users/edit-user", { state: product })
-                      }
+                      // onClick={() =>
+                      //   navigate("/admin/users/edit-user", {
+                      //     state: product,
+                      //   })
+                      // }
+                      onClick={()=> console.log("kush")}
                     >
                       Edit
                     </button>
+                    </Link>
+                    
                   </td>
                   <td>
                     <button

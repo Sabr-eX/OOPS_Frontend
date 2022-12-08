@@ -1,105 +1,119 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PrimaryButton } from "./CommonStyled";
 
-const CreateProduct = () => {
+const EditUser = () => {
+  // const [productImg, setProductImg] = useState("");
   let {state} = useLocation();
   const product = state["product"];
 console.log(state);
-
+  // let { state } = useLocation();
+  // const product = state["product"];
 async function handleSubmit(e) {
   e.preventDefault();
-//   let item = { name, price, discount, image, description, quantity };
-//   console.log(item);
-//   let result = await fetch(
-//     "https://gada-electronics.up.railway.app/edit/"+state.id,
-//     {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//       body: JSON.stringify(item),
-//     }
-//   );
-//   result = await result.json();
+  let item = { name, description, quantity, price, delivery , discount};
+  console.log(state.id);
+  let result = await fetch(
+    "https://gada-electronics.up.railway.app/products/edit/"+state.id,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(item),
+    }
+  );
+  result = await result.json();
 }
 
 
   // const navigate = useNavigate();
   const [name, setName] = useState(state.name);
-  const [image, setImg] = useState(state.image);
+  // const [image, setImg] = useState(state.image);
   const [price, setPrice] = useState(state.price);
   const [description, setDesc] = useState(state.description);
   const [quantity, setQty] = useState(state.quantity);
   const [discount, setDiscount] = useState(state.discount);
+  const [delivery, setDelivery] = useState(state.delivery);
+  const [id, setTd] = useState(state.id);
 
-  return (
-    <StyledCreateProduct>
-      <StyledForm>
-        <h3>Edit a Product</h3>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          value={image}
-          placeholder="Image URL"
-          onChange={(e) => setImg(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          value={discount}
-          placeholder="Discount"
-          onChange={(e) => setDiscount(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          value={price}
-          placeholder="Price"
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          value={quantity}
-          placeholder="Quantity"
-          onChange={(e) => setQty(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          value={description}
-          placeholder="Short Description"
-          onChange={(e) => setDesc(e.target.value)}
-          required
-        />
+  // return (
+    
+  //   <StyledCreateProduct>
+  //     <StyledForm>
+  //       <h3>Edit a Product</h3>
+  //       <input
+  //         type="text"
+  //         placeholder="Name"
+  //         value={name}
+  //         onChange={(e) => setName(e.target.value)}
+  //         required
+  //       />
+  //       {/* <input
+  //         type="text"
+  //         value={image}
+  //         placeholder="Image URL"
+  //         onChange={(e) => setImg(e.target.value)}
+  //         required
+  //       /> */}
+  //       <input
+  //         type="number"
+  //         value={discount}
+  //         placeholder="Discount"
+  //         onChange={(e) => setDiscount(e.target.value)}
+  //         required
+  //       />
+  //       <input
+  //         type="number"
+  //         value={price}
+  //         placeholder="Price"
+  //         onChange={(e) => setPrice(e.target.value)}
+  //         required
+  //       />
+  //       <input
+  //         type="number"
+  //         value={quantity}
+  //         placeholder="Quantity"
+  //         onChange={(e) => setQty(e.target.value)}
+  //         required
+  //       />
+  //       <input
+  //         type="number"
+  //         value={delivery}
+  //         placeholder="Delivery"
+  //         onChange={(e) => setDelivery(e.target.value)}
+  //         required
+  //       />
+  //       <input
+  //         type="text"
+  //         value={description}
+  //         placeholder="Short Description"
+  //         onChange={(e) => setDesc(e.target.value)}
+  //         required
+  //       />
 
-        <PrimaryButton type="submit" onClick={handleSubmit}>
-          Submit
-        </PrimaryButton>
-      </StyledForm>
-      <ImagePreview>
-        {image ? (
-          <>
-            <img src={image} alt="error!" />
-          </>
-        ) : (
-          <p>Product image upload preview will appear here!</p>
-        )}
-      </ImagePreview>
-    </StyledCreateProduct>
-  );
+  //       <PrimaryButton type="submit" onClick={handleSubmit}>
+  //         Submit
+  //       </PrimaryButton>
+  //     </StyledForm>
+  //     {/* <ImagePreview>
+  //       {image ? (
+  //         <>
+  //           <img src={image} alt="error!" />
+  //         </>
+  //       ) : (
+  //         <p>Product image upload preview will appear here!</p>
+  //       )}
+  //     </ImagePreview> */}
+  //   </StyledCreateProduct>
+  // );
 };
 
-export default CreateProduct;
+export default EditUser;
 
 const StyledForm = styled.form`
   display: flex;
