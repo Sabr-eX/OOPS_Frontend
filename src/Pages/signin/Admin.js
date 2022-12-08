@@ -56,7 +56,7 @@ if (result.ok) {
   setError(false);
   localStorage.setItem("user-info", JSON.stringify(result));
   if (!result.role.localeCompare("ADMIN")) {
-    navigate("/CustomerHome");
+    navigate("/admin");
   }
 }
 else {

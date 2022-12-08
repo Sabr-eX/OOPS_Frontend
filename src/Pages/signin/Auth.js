@@ -84,7 +84,7 @@ export default function () {
       }
     );
     result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
+    // localStorage.setItem("user-info", JSON.stringify(result));
     //  history.pushState("/add")
   }
   //     async function signin (){
