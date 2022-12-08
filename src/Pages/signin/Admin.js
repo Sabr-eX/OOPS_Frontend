@@ -111,7 +111,7 @@ else {
                 Login as User
               </button>
               </Link>
-              <Link to='/manager'><button formAction="/manager" className="btn btn-danger">
+              <Link to='/managersignin'><button formAction="/manager" className="btn btn-danger">
                 Login as Manager
               </button>
               </Link>
