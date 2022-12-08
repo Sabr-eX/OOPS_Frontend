@@ -9,12 +9,26 @@ import Transactions from "./summary-components/Transactions";
 import AllTimeData from "./summary-components/AllTimeData";
 
 const Summary = () => {
-  // const [users,setUsers] = useState([]);
+  // const [report,setReport] = useState([]);
   // const [usersPrec,setUsersPrec] = useState(0);
   // const [orders,setOrders] = useState([]);
   // const [ordersPrec,setOrdersPrec] = useState(0);
   // const [income,setIncome] = useState([]);
   // const [incomePrec,setIncomePrec] = useState(0);
+
+  //  useEffects(() => {
+  //   async function fetchReport() {
+  //     try {
+  //       const res = await axios.get(
+  //         `https://gada-electronics.up.railway.app/admin/reports`
+  //       );
+  //       setReport(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   fetchReport();
+  // }, []);
 
   // function compare(a,b){
   //   if(a._id<b._id){
@@ -58,7 +72,7 @@ const Summary = () => {
   const data = [
     {
       icon: <FaUsers />,
-      digits: 50,
+      digits: 30,
       isMoney: false,
       title: "Users",
       color: "rgb(102, 108, 255)",
