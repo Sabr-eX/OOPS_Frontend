@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { PrimaryButton } from "./CommonStyled";
 
 const CreateProduct = () => {
-
   // const [productImg, setProductImg] = useState("");
   const [name, setName] = useState("");
   const [image, setImg] = useState("");
@@ -15,22 +14,20 @@ const CreateProduct = () => {
 
   async function handleSubmit(e) {
     // e.preventDefault();
-    let item = {name,price,discount,image,description,quantity}
-    console.log(item)
+    let item = { name, price, discount, image, description, quantity };
+    console.log(item);
     let result = await fetch(
       "https://gada-electronics.up.railway.app/products/create",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          Accept: "application/json",
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(item),
       }
-      );
-      result = await result.json();
-
-
+    );
+    result = await result.json();
   }
 
   return (
@@ -81,7 +78,7 @@ const CreateProduct = () => {
         />
 
         <PrimaryButton type="submit" onClick={handleSubmit}>
-        Submit
+          Submit
         </PrimaryButton>
       </StyledForm>
       <ImagePreview>

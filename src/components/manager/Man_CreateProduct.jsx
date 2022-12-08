@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { PrimaryButton } from "./Man_CommonStyled";
+import { PrimaryButton } from "./CommonStyled";
 
 const CreateProduct = () => {
   // const [productImg, setProductImg] = useState("");
