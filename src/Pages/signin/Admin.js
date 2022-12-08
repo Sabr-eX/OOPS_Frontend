@@ -3,10 +3,12 @@ import './Admin.css'
 import axios from "axios"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-export default function () {
-const navigate = useNavigate();
 
+export default function () {
+  const navigate = useNavigate();
     let [authMode, setAuthMode] = useState("signin")
+    let [error, setError] = useState(false)
+  let [errorMessage, setErrorMessage] = useState("")
     let [email,setSignInEmail]= useState("")
   let [password,setSigninpwd] = useState("")
   const handlesigninemailchange=(e)=>{
@@ -37,24 +39,33 @@ const navigate = useNavigate();
 //      .catch(error => {
 //        alert('service error')
 //      })
-let result3 = await fetch("https://gada-electronics.up.railway.app/users/signin",{
-  method : 'POST',
-  headers:{
-    "Content-Type":"application/json",
-    "Accept": "application/json"
-  },
-  body : JSON.stringify(item)
+let result = await fetch(
+  "https://gada-electronics.up.railway.app/users/signin",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(item),
+  }
+);
 
-})
-result3 = await result3.json()
-localStorage.setItem("user-info",JSON.stringify(result3))
-if(!result3.role.localeCompare("ADMIN"))
-{
- navigate('/admin');
+if (result.ok) {
+  result = await result.json();
+  setError(false);
+  localStorage.setItem("user-info", JSON.stringify(result));
+  if (!result.role.localeCompare("ADMIN")) {
+    navigate("/CustomerHome");
+  }
 }
-else{
-  window.alert("sometext");
+else {
+  result = await result.text();
+  setError(true);
+  setErrorMessage(result);
+  // setErrorMessage(result);
 }
+
 } 
 
 
@@ -62,7 +73,7 @@ else{
       return (
         
         <div className="Auth-form-container">
-          <h3 className="position-absolute start-0 top-0 title">Welcome to Shopify</h3>
+          <h3 className="position-absolute start-0 top-0 ms-1">Name</h3>
           <form className="Auth-form">
             <div className="Auth-form-content">
               <h3 className="Auth-form-title" >Admin Sign In</h3>
@@ -100,7 +111,7 @@ else{
                 Login as User
               </button>
               </Link>
-              <Link to='/managersignin'><button formAction="/manager" className="btn btn-danger">
+              <Link to='/manager'><button formAction="/manager" className="btn btn-danger">
                 Login as Manager
               </button>
               </Link>
@@ -108,6 +119,11 @@ else{
               <p className="text-center mt-2 text-white">
               <label>Forgot</label> <a href="#" >password?</a>
               </p>
+              {error &&
+            <h6>
+              {errorMessage}
+            </h6>
+          }
              
     
             </div>
