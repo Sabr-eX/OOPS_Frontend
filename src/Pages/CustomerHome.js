@@ -133,6 +133,7 @@ export default function CustomerHome() {
       <Navbar count={cart.length} handleShow={handleShow}></Navbar>
       <br />
       <div>
+        <br />
         <Carousel />
         <br />
         <br />
