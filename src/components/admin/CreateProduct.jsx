@@ -9,43 +9,23 @@ const CreateProduct = () => {
   const dispatch = useDispatch();
   const { createStatus } = useSelector((state) => state.products);
 
-  const [productImg, setProductImg] = useState("");
-  const [brand, setBrand] = useState("");
+  // const [productImg, setProductImg] = useState("");
   const [name, setName] = useState("");
+  const [image, setImg] = useState("");
   const [price, setPrice] = useState("");
   const [desc, setDesc] = useState("");
 
-  const handleProductImageUpload = (e) => {
-    const file = e.target.files[0];
-
-    TransformFileData(file);
-  };
-
-  const TransformFileData = (file) => {
-    const reader = new FileReader();
-
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setProductImg(reader.result);
-      };
-    } else {
-      setProductImg("");
-    }
-  };
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    dispatch(
-      productsCreate({
-        name,
-        brand,
-        price,
-        desc,
-        image: productImg,
-      })
-    );
+    // e.preventDefault();
+    // dispatch(
+    //   productsCreate({
+    //     name,
+    //     image,
+    //     brand,
+    //     price,
+    //     desc,
+    //   })
+    // );
   };
 
   return (
@@ -53,23 +33,15 @@ const CreateProduct = () => {
       <StyledForm onSubmit={handleSubmit}>
         <h3>Create a Product</h3>
         <input
-          id="imgUpload"
-          accept="image/*"
-          type="file"
-          onChange={handleProductImageUpload}
-          required
-        />
-        <select onChange={(e) => setBrand(e.target.value)} required>
-          <option value="">Select Brand</option>
-          <option value="iphone">iPhone</option>
-          <option value="samsung">Samsung</option>
-          <option value="xiomi">Xiomi</option>
-          <option value="other">Other</option>
-        </select>
-        <input
           type="text"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Image URL"
+          onChange={(e) => setImg(e.target.value)}
           required
         />
         <input
@@ -90,9 +62,9 @@ const CreateProduct = () => {
         </PrimaryButton>
       </StyledForm>
       <ImagePreview>
-        {productImg ? (
+        {image ? (
           <>
-            <img src={productImg} alt="error!" />
+            <img src={image} alt="error!" />
           </>
         ) : (
           <p>Product image upload preview will appear here!</p>

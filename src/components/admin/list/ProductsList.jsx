@@ -19,6 +19,14 @@ useEffect(() => {
   getProducts();
 }, [])
 
+async function handleDelete(id) {
+  let result = await fetch(
+    "https://gada-electronics.up.railway.app/products/delete/{id}",
+    {
+      method: "POST",
+    }
+  );
+}
 
 
   return (
@@ -55,7 +63,7 @@ useEffect(() => {
                 </button>
               </td> */}
               <td>
-                <button type="button" class="btn btn-danger btn-xsm me-2">
+                <button type="button" onClick={handleDelete(product.id)} class="btn btn-danger btn-xsm me-2">
                   Delete
                 </button>
               </td>
