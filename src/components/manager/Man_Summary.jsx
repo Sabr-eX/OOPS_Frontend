@@ -9,7 +9,7 @@ import Transactions from "./Man_summary/Transactions";
 import AllTimeData from "./Man_summary/AllTimeData";
 
 const Man_Summary = () => {
-  // const [report, setReport] = useState([]);
+  const [report, setReport] = useState([]);
   // const [users,setUsers] = useState([]);
   // const [usersPrec,setUsersPrec] = useState(0);
   // const [orders,setOrders] = useState([]);
@@ -17,19 +17,19 @@ const Man_Summary = () => {
   // const [income,setIncome] = useState([]);
   // const [incomePrec,setIncomePrec] = useState(0);
 
-  // useEffects(() => {
-  //   async function fetchReport() {
-  //     try {
-  //       const res = await axios.get(
-  //         `https://gada-electronics.up.railway.app/admin/reports`
-  //       );
-  //       setReport(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   fetchReport();
-  // }, []);
+  useEffects(() => {
+    async function fetchReport() {
+      try {
+        const res = await axios.get(
+          `https://gada-electronics.up.railway.app/admin/reports`
+        );
+        setReport(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchReport();
+  }, []);
 
   // function compare(a,b){
   //   if(a._id<b._id){

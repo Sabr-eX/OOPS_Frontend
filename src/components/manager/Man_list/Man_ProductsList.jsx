@@ -23,13 +23,11 @@ useEffect(() => {
 
   return (
     <div>
-      
-
-<div className="d-flex flex-column">
+      <div className="d-flex flex-column">
         <h1 className="text-white m-3">Products</h1>
         <table className="table table-dark table-xl m-3">
           <thead>
-            <tr>
+            <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
               <th scope="col">Product ID</th>
               <th scope="col">Product Name</th>
               <th scope="col">Image</th>
@@ -39,32 +37,31 @@ useEffect(() => {
             </tr>
           </thead>
           <tbody>
-
-  {product?.map(product => {
-          return (
-            <tr>
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <ImageContainer>
-   <img src={product?.image} alt=""/>
-   </ImageContainer>
-              <td>₹ {product.price}</td>
-              {/* <td>
+            {product?.map((product) => {
+              return (
+                <tr style={{ height: "5px", fontSize: "17px" }}>
+                  <td>{product.id}</td>
+                  <td>{product.name}</td>
+                  <ImageContainer>
+                    <img src={product?.image} alt="" />
+                  </ImageContainer>
+                  <td>₹ {product.price}</td>
+                  {/* <td>
                 <button type="button" class="btn btn-success btn-xsm me-2">
                   Add
                 </button>
               </td> */}
-              <td>
-                <button type="button" class="btn btn-danger btn-xsm me-2">
-                  Delete
-                </button>
-              </td>
-            </tr>
-    )})}
-            
+                  <td>
+                    <button type="button" class="btn btn-danger btn-xsm me-2">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
-        </div>
+      </div>
     </div>
   );
 }
