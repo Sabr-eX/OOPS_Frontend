@@ -9,7 +9,7 @@ export default function Profilepagecomponent() {
   const [editOn, setEditOn] = useState(true);
   const [name, setName] = useState(userInfo.name);
   const [email, setEmail] = useState(userInfo.email);
-  const [password, setPassword] = useState(userInfo.password);
+  const [password, setPassword] = useState("");
   const [phone, setPhone] = useState(userInfo.phone);
   let item = { email, password };
 
@@ -22,29 +22,29 @@ export default function Profilepagecomponent() {
     event.preventDefault();
     setEditOn(!editOn);
 
-    const response = await axios.post(
-      "https://gada-electronics.up.railway.app/users/id" + userInfo.id,
+    let response = await axios.post(
+      "https://gada-electronics.up.railway.app/users/edit/" + userInfo.id,
       {
         name,
-        email,
         password,
         phone,
       }
     );
 
-    let result = await fetch(
-      "https://gada-electronics.up.railway.app/users/signin",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(item),
-      }
-    );
-    result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
+    // let result = await fetch(
+    //   "https://gada-electronics.up.railway.app/users/signin",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json",
+    //     },
+    //     body: JSON.stringify(item),
+    //   }
+    // );
+    response = await response.data;
+    localStorage.setItem("user-info", JSON.stringify(response));
+    setPassword("");
   };
 
   return (

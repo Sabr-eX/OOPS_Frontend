@@ -7,6 +7,12 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar({ count, handleShow, product, addToCart }) {
+  function signout (){
+     localStorage.removeItem("user-info");
+  }
+ 
+    
+    
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -72,7 +78,7 @@ export default function Navbar({ count, handleShow, product, addToCart }) {
             </li>
             <li>
               <Link to="/">
-                <a className="dropdown-item">Sign Out</a>
+                <button className="dropdown-item btn btn-danger" onClick={signout}>Sign Out</button>
               </Link>
             </li>
           </ul>

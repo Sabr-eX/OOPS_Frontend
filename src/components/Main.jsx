@@ -5,11 +5,12 @@ import { fetchProducts } from "../api/index";
 import Navbar from "../Pages/Navbar";
 
 const Main = () => {
+  const userInfo = JSON.parse(localStorage.getItem("user-info"));
   const [productData, setProductData] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const fetchData = async () => {
-    await fetchProducts()
+    await fetchProducts(userInfo?.id)
     .then((data) => {
       setProductData(data);
       setCategories(prev => [...new Set(data.map((item) => item.status))])
@@ -19,19 +20,22 @@ const Main = () => {
     });
   };
 
-  const fetchDataByCategorie = (e) =>{
-    fetchProducts(e.target.value)
-    .then((data) => {
-      setProductData(data);
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-  }
-
+  // const fetchDataByCategorie = (e) =>{
+  //   fetchProducts(e.target.value)
+  //   .then((data) => {
+  //     setProductData(data);
+  //   })
+  //   .catch((e) => {
+  //     console.error(e);
+  //   });
+  // }
+let [mounted, setMounted]=useState(true)
 
   useEffect(() => {
-    fetchData();
+    if(mounted){
+      fetchData();
+      setMounted(false)
+    }
   }, []);
 
   return (

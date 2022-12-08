@@ -58,14 +58,14 @@ export default function Basic() {
       const tempObject = {
         "id": cart[i].id,
         "quantity": cart[i]?.quantity,
-        "price": cart[i]?.price * ((100 - cart[i]?.discount) / 100)
+        "price": Math.round(cart[i]?.price * ((100 - cart[i]?.discount) / 100))
       }
       if (tempObject.quantity == 0) {
         continue;
       }
       postObject.orderItems.push(tempObject);
     }
-    console.log(postObject);
+    // console.log(postObject);
 
     let result = await fetch("https://gada-electronics.up.railway.app/orders/create", {
       method: "POST",

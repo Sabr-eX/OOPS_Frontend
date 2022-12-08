@@ -25,18 +25,16 @@
 //         return null;
 //     }
 // }
-const userInfoFromLS = JSON.parse(localStorage.getItem("user-info"))
 
-const API_URL = 'https://gada-electronics.up.railway.app/orders/user/'+userInfoFromLS?.id
-
+const API_URL = 'https://gada-electronics.up.railway.app/orders/user/'
 
 const fetchData = async (url) =>{
     const response = await fetch(url);
     const data = await response.json();
     return data;
 }
-export const fetchProducts = (param = "all" ) => {
-    if(param === "all") return fetchData(API_URL);
+export const fetchProducts = (userID, param = "all" ) => {
+    if(param === "all") return fetchData(API_URL + userID);
     return fetchData(`${API_URL}/category/${param}`);
 }
 
