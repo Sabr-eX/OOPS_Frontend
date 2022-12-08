@@ -58,12 +58,12 @@ const DataTable = ({ products }) => {
   console.log(newProducts);
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 500, width: "100%" }}>
       <DataGrid
         rows={newProducts}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={8}
+        rowsPerPageOptions={[13]}
         disableColumnMenu
         disableSelectionOnClick
       />
