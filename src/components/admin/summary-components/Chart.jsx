@@ -20,7 +20,7 @@ const Chart = ()=>{
 //     return 0;
 //   }
 
-//     useEffects(()=>{
+//     useEffect(()=>{
 //         async function fetchData(){
                 // setLoading(true)
 //             try{
@@ -39,7 +39,7 @@ const Chart = ()=>{
 
 //                     return {
 //                         day: DAYS[item._id-1],
-//                         amount: item.total/100
+//                         amount: item.total
 //                     }
 //                  })
 //                  setSales(newData)
