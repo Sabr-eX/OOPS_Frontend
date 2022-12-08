@@ -1,12 +1,15 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import "./User.css";
+import "./Admin.css";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+// import { nlNL } from "@mui/x-data-grid";
 
 export default function () {
   const navigate = useNavigate();
-  let [authMode, setAuthMode] = useState("signin");
+  let [error, setError] = useState(false)
+  let [errorMessage, setErrorMessage] = useState("")
+  let [authMode, setAuthMode] = useState(true);
   let [email, setSignInEmail] = useState("");
   let [password, setSigninpwd] = useState("");
   const handlesigninemailchange = (e) => {
@@ -48,12 +51,20 @@ export default function () {
         body: JSON.stringify(item),
       }
     );
-    result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    if (!result.role.localeCompare("CUSTOMER")) {
-      navigate("/CustomerHome");
-    } else {
-      alert("defaultText");
+
+    if (result.ok) {
+      result = await result.json();
+      setError(false);
+      localStorage.setItem("user-info", JSON.stringify(result));
+      if (!result.role.localeCompare("CUSTOMER")) {
+        navigate("/CustomerHome");
+      }
+    }
+    else {
+      result = await result.text();
+      setError(true);
+      setErrorMessage(result);
+      // setErrorMessage(result);
     }
   }
 
@@ -80,7 +91,7 @@ export default function () {
               name="email"
               value={email}
               onChange={handlesigninemailchange}
-              // onBlur={() => this.props.actions.updateInput(this.state.inputValue)}
+            // onBlur={() => this.props.actions.updateInput(this.state.inputValue)}
             />
           </div>
           <div className="form-group mt-3">
@@ -95,8 +106,8 @@ export default function () {
           </div>
           {/* {
             PwdIsValid() ? <label>Correct</label> :  <label>Incorrect</label>
-
           } */}
+
           <div className="d-grid gap-2 mt-3">
             <button
               onClick={signin}
@@ -125,6 +136,11 @@ export default function () {
           <p className="text-center mt-2 text-white">
             <label>Forgot</label> <a href="#">password?</a>
           </p>
+          {error &&
+            <h6>
+              {errorMessage}
+            </h6>
+          }
         </div>
       </form>
     </div>
