@@ -21,9 +21,10 @@ export default function OrdersList() {
   return (
     <div className="d-flex flex-column">
       <h1 className="text-white m-3">Orders</h1>
-      <table className="table table-dark table-xl m-3">
+      <table className="table table-striped table-bordered table-hover table-xl m-3">
         <thead>
           <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
+            <th scope="col">Order ID</th>
             <th scope="col">Customer Name</th>
             <th scope="col">Product ID</th>
             <th scope="col">Product Name</th>
@@ -38,8 +39,9 @@ export default function OrdersList() {
           {orders?.map((order) => {
             return (
               <tr style={{ height: "5px", fontSize: "17px" }}>
-                <td>{order.user.name}</td>
                 <td>{order.id}</td>
+                <td>{order.user.name}</td>
+                <td>{order.products.id}</td>
                 <td>{order.products.name}</td>
                 <ImageContainer>
                   <img src={order.products.image} alt="" />

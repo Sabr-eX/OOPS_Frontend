@@ -78,7 +78,7 @@ const Man_Summary = () => {
       </MainStats>
       <SideStats>
         <Transactions />
-        <AllTimeData />
+        
       </SideStats>
     </StyledSummary>
   );

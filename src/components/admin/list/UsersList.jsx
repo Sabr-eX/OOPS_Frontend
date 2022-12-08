@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function UsersList() {
   const navigate = useNavigate();
   const [product, setProduct] = useState();
@@ -22,49 +20,49 @@ export default function UsersList() {
     getProducts();
   }, []);
 
-async function handleDelete(id){
-  let item = {id}
-  console.log(id)
-  let result = await fetch(
-    "https://gada-electronics.up.railway.app/users/delete/"+id,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(item)
-    }
+  async function handleDelete(id) {
+    let item = { id };
+    console.log(id);
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/users/delete/" + id,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(item),
+      }
     );
     result = await result.json();
-}
+  }
 
-async function handleEdit(id){
-  let item = {id}
-  console.log(id)
-  // let result = await fetch(
-  //   "https://gada-electronics.up.railway.app/users/"+id,
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //     },
-  //     body: JSON.stringify(item)
-  //   }
-  //   );
-  //   result = await result.json();
-}
+  async function handleEdit(id) {
+    let item = { id };
+    console.log(id);
+    // let result = await fetch(
+    //   "https://gada-electronics.up.railway.app/users/"+id,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Accept": "application/json"
+    //     },
+    //     body: JSON.stringify(item)
+    //   }
+    //   );
+    //   result = await result.json();
+  }
 
   return (
     <div style={{ height: 400, width: "100%" }}>
       <div className="d-flex flex-column">
-        <h1 className="text-white m-3">Products</h1>
+        <h1 className="text-white m-3">Users</h1>
         <table className="table table-striped table-bordered table-hover table-xl m-3">
           <thead>
             <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
-              <th scope="col">Product ID</th>
-              <th scope="col">Product Name</th>
+              <th scope="col">User ID</th>
+              <th scope="col">User Name</th>
               <th scope="col">Phone No.</th>
               {/* <th scope="col">Price</th> */}
               {/* <th scope="col">Edit</th> */}
@@ -88,22 +86,40 @@ async function handleEdit(id){
                 Add
               </button>
             </td> */}
-            <td>{(product.role==="ADMIN")?(<Admin>Admin</Admin>):((product.role==="MANAGER")?(<Manager>Manager</Manager>):(<Customer>Customer</Customer>))}</td>
-            <td>
-            <button type="button" class="btn btn-success btn-xsm me-2" onClick={() => navigate("/admin/users/edit-user",{state:product})}>
-                  Edit
-                </button>
-              </td>
-            <td>
-              <button type="button" onClick={() => handleDelete(product.id)} class="btn btn-danger btn-xsm me-2">
-                Delete
-              </button>
-            </td>
-          </tr>
-  )})}
-          
-        </tbody>
-      </table>
+                  <td>
+                    {product.role === "ADMIN" ? (
+                      <Admin>Admin</Admin>
+                    ) : product.role === "MANAGER" ? (
+                      <Manager>Manager</Manager>
+                    ) : (
+                      <Customer>Customer</Customer>
+                    )}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-success btn-xsm me-2"
+                      onClick={() =>
+                        navigate("/admin/users/edit-user", { state: product })
+                      }
+                    >
+                      Edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(product.id)}
+                      class="btn btn-danger btn-xsm me-2"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );

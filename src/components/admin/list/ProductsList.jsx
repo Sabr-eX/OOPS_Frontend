@@ -43,8 +43,6 @@ export default function ProductsList() {
 
   return (
     <div>
-
-
       <div className="d-flex flex-column">
         <h1 className="text-white m-3">Products</h1>
         <table className="table table-striped table-bordered table-hover table-xl m-3">
@@ -61,8 +59,7 @@ export default function ProductsList() {
             </tr>
           </thead>
           <tbody>
-
-            {product?.map(product => {
+            {product?.map((product) => {
               return (
                 <tr>
                   <td>{product.id}</td>
@@ -74,24 +71,34 @@ export default function ProductsList() {
                   <td>₹ {product.price}</td>
                   <td>{product.quantity}</td>
                   <td>
-                <button type="button" class="btn btn-success btn-xsm me-2" onClick={() => navigate("/admin/products/edit-product",{state:product})}>
-                  Edit
-                </button>
-              </td>
+                    <button
+                      type="button"
+                      class="btn btn-success btn-xsm me-2"
+                      onClick={() =>
+                        navigate("/admin/products/edit-product", {
+                          state: product,
+                        })
+                      }
+                    >
+                      Edit
+                    </button>
+                  </td>
                   <td>
-                    <button type="submit" onClick={() => handleDelete(product.id)} class="btn btn-danger btn-xsm me-2">
+                    <button
+                      type="submit"
+                      onClick={() => handleDelete(product.id)}
+                      class="btn btn-danger btn-xsm me-2"
+                    >
                       Delete
                     </button>
                   </td>
                 </tr>
-              )
+              );
             })}
-
           </tbody>
         </table>
       </div>
-      </div>
-    
+    </div>
   );
 }
 

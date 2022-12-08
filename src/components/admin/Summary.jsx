@@ -77,7 +77,6 @@ const Summary = () => {
       </MainStats>
       <SideStats>
         <Transactions />
-        <AllTimeData />
       </SideStats>
     </StyledSummary>
   );
