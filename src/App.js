@@ -22,7 +22,11 @@ import Users from "./components/admin/Users";
 import Orders from "./components/admin/Orders";
 import Summary from "./components/admin/Summary";
 import CreateProduct from "./components/admin/CreateProduct";
+import EditProduct from "./components/admin/EditProduct";
 import ProductsList from "./components/admin/list/ProductsList";
+import EditUser from "./components/admin/EditUser";
+import UsersList from "./components/admin/list/UsersList";
+import Navbar from "./Pages/Navbar";
 
 import Man_Dashboard from "./components/manager/Man_Dashboard";
 import Man_Products from "./components/manager/Man_Products";
@@ -103,11 +107,16 @@ function App() {
             <Route path="products" element={<Products />}>
               <Route index element={<ProductsList />} />
               <Route path="create-product" element={<CreateProduct />} />
+              <Route path="edit-product" element={<EditProduct />} />
             </Route>
             <Route path="summary" element={<Summary />} />
-            <Route path="users" element={<Users />} />
+            <Route path="users" element={<Users />} >
+              <Route index element={<UsersList />} />
+              <Route path="edit-user" element={<EditUser />} />
+            </Route>
             <Route path="orders" element={<Orders />} />
           </Route>
+          
           <Route path="/manager" element={<Man_Dashboard />}>
             <Route path="products" element={<Man_Products />}>
               <Route index element={<Man_ProductsList />} />

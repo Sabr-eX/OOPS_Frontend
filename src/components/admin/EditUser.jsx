@@ -1,32 +1,29 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PrimaryButton } from "./CommonStyled";
 
 const CreateProduct = () => {
-  // const [productImg, setProductImg] = useState("");
   let {state} = useLocation();
   const product = state["product"];
 console.log(state);
 
 async function handleSubmit(e) {
-  // e.preventDefault();
-  let item = { name, price, discount, image, description, quantity };
-  console.log(item);
-  let result = await fetch(
-    "https://gada-electronics.up.railway.app/edit/"+state.id,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(item),
-    }
-  );
-  result = await result.json();
+  e.preventDefault();
+//   let item = { name, price, discount, image, description, quantity };
+//   console.log(item);
+//   let result = await fetch(
+//     "https://gada-electronics.up.railway.app/edit/"+state.id,
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//       body: JSON.stringify(item),
+//     }
+//   );
+//   result = await result.json();
 }
 
 

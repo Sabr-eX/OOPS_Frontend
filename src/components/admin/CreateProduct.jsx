@@ -13,7 +13,7 @@ const CreateProduct = () => {
   const [discount, setDiscount] = useState("");
 
   async function handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     let item = { name, price, discount, image, description, quantity };
     console.log(item);
     let result = await fetch(
