@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function () {
   const navigate = useNavigate();
-  let [error, setError] = useState(false)
-  let [errorMessage, setErrorMessage] = useState("")
+  let [error, setError] = useState(false);
+  let [errorMessage, setErrorMessage] = useState("");
   let [authMode, setAuthMode] = useState(true);
   let [email, setSignInEmail] = useState("");
   let [password, setSigninpwd] = useState("");
@@ -59,11 +59,10 @@ export default function () {
       if (!result.role.localeCompare("CUSTOMER")) {
         navigate("/CustomerHome");
       }
-    }
-    else {
+    } else {
       result = await result.text();
       setError(true);
-      setErrorMessage(result);
+      setErrorMessage("Incorrect Email or Password");
       // setErrorMessage(result);
     }
   }
@@ -91,7 +90,7 @@ export default function () {
               name="email"
               value={email}
               onChange={handlesigninemailchange}
-            // onBlur={() => this.props.actions.updateInput(this.state.inputValue)}
+              // onBlur={() => this.props.actions.updateInput(this.state.inputValue)}
             />
           </div>
           <div className="form-group mt-3">
@@ -136,11 +135,7 @@ export default function () {
           <p className="text-center mt-2 text-white">
             <label>Forgot</label> <a href="#">password?</a>
           </p>
-          {error &&
-            <h6>
-              {errorMessage}
-            </h6>
-          }
+          {error && <h6>{errorMessage}</h6>}
         </div>
       </form>
     </div>

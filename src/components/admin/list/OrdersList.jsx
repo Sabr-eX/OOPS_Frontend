@@ -94,22 +94,22 @@ const Actions = styled.div`
 `;
 
 const Pending = styled.div`
-  color: rgb(253, 181, 40);
-  background-color: rgb(253, 181, 40, 0.12);
+  color: rgb(30, 79, 249);
+  background-color: rgb(38, 198, 249, 0.45);
   padding: 3px 5px;
   border-radius: 3px;
   font-size: 14px;
 `;
 const Shipped = styled.div`
-  color: rgb(38, 198, 249);
-  background-color: rgb(38, 198, 249, 0.12);
+  color: rgb(98, 70, 23);
+  background-color: rgb(253, 181, 40, 0.45);
   padding: 3px 5px;
   border-radius: 3px;
   font-size: 14px;
 `;
 const Delivered = styled.div`
-  color: rgb(181, 253, 40);
-  background-color: rgb(181, 253, 40, 0.12);
+  color: rgb(62, 80, 27);
+  background-color: rgb(191, 223, 128, 0.45);
   padding: 3px 5px;
   border-radius: 3px;
   font-size: 14px;

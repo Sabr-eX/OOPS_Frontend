@@ -6,8 +6,8 @@
 }
 .Auth-form-container {
 
-background: url(./R.jpeg) no-repeat;
-background-size: cover;
+  background: url(./R.jpeg) no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,60 +15,29 @@ background-size: cover;
   height: 100vh;
 }
 
-.Auth-form {
-  width: 420px;
-  box-shadow: rgba(239, 236, 201, 0.16) 1px 1px 10px;
-  padding-top: 30px;
-  padding-bottom: 20px;
-  border-radius: 8px;
-  background-color:rgb(245, 235, 224)
+
+
+
+
+
+
+
+
+
+.sub {
+  width: 16.5vw !important;
+  margin-bottom: 10px !important;
 }
 
-.Auth-form-content {
-  padding-left: 12%;
-  padding-right: 12%;
-}
-
-.Auth-form-title {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 24px;
-  color: rgb(12, 2, 2);
-  font-weight: 800;
-}
-
-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgb(9, 8, 8);
-}
-
-a{
-  color: red;
-}
-
-a:hover{
-  color: palevioletred;
-}
-
-a:click{
-  color: palevioletred;
-}
-
-.link-primary{
-  color: red !important;
 
 
+.adm {
+  width: 8.25vw !important;
+  margin-right: .25vw !important;
 
 }
-.link-primary:hover{
-  color: palevioletred !important;
-  cursor: pointer;
-}
 
-.link-primary:click{
-  color: palevioletred !important;
-}
-.balance{
-  margin-top: 5vh;
+.mgr {
+  width: 8vw !important;
+  margin-left: 1vw !important;
 }

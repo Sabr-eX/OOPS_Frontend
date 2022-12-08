@@ -75,6 +75,7 @@ export default function Basic() {
       },
       body: JSON.stringify(postObject)
     });
+    console.log(postObject);
     // console.log(result.text());
     if (result.ok) {
       result = await result.json();

@@ -62,7 +62,7 @@ if (result.ok) {
 else {
   result = await result.text();
   setError(true);
-  setErrorMessage(result);
+  setErrorMessage("Incorrect Email or Password");
   // setErrorMessage(result);
 }
 
