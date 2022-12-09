@@ -35,9 +35,9 @@ export default function Product({ product, addToCart, addToWishlist }) {
               Show live toast
             </button> */}
 
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            {/* <div class="toast-container position-fixed bottom-0 end-0 p-3">
               <div
-                id="liveToast"
+                
                 class="toast"
                 role="alert"
                 aria-live="assertive"
@@ -56,7 +56,7 @@ export default function Product({ product, addToCart, addToWishlist }) {
                 </div>
                 <div class="toast-body">Product added to Cart</div>
               </div>
-            </div>
+            </div> */}
 
             <div className="card mb-3" aria-hidden="true">
               <div className="row g-0">
@@ -109,7 +109,7 @@ export default function Product({ product, addToCart, addToWishlist }) {
 
                   <button
                     className="btn btn-outline-danger position-absolute end-0 bottom-0 translate-middle-x mb-5"
-                    id="liveToastBtn"
+                    // id="liveToastBtn"
                     onClick={() => addToCart(product)}
                     // onClick={setShow(true)}
                   >

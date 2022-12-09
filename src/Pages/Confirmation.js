@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Confirmation.css";
 import Navbar from "./Navbar";
 
-localStorage.removeItem("cart");
+// localStorage.removeItem("cart");
 function deleteCart() {
   localStorage.removeItem("cart");
 }

@@ -9,7 +9,7 @@ import Wishlist from "./Pages/Wishlist";
 import Profilepagecomponent from "./Pages/profilepage";
 import Confirmation from "./Pages/Confirmation";
 import Wallet from "./Pages/Wallet";
-import bootstrap from "bootstrap";
+// import bootstrap from "bootstrap";
 import NotFound from "./components/NotFound";
 // import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";

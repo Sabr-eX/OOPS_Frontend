@@ -17,7 +17,7 @@ function CartList() {
   }, [CART]);
 
   function deleteCart() {
-    setCART([]);
+    setCART("[]");
   }
 
   return (
@@ -81,9 +81,7 @@ function CartList() {
                 </div>
 
                 <div className="col-1">
-                  <button className="btn btn-danger" onClick={(cartItem) => {}}>
-                    Delete
-                  </button>
+                  <button className="btn btn-danger">Delete</button>
                 </div>
               </div>
             </div>
