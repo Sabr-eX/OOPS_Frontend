@@ -38,6 +38,7 @@ import Man_ProductsList from "./components/manager/Man_list/Man_ProductsList";
 import Product from "./components/Details/Product";
 import Order from "./components/Details/Order";
 import UserProfile from "./components/Details/UserProfile";
+import OrderProfile from "./components/Details/OrderProfile";
 import NavBar from "./Pages/Navbar";
 import Auth from "./Pages/signin/Auth";
 import Admin from "./Pages/signin/Admin";
@@ -108,6 +109,7 @@ function App() {
           {/* <Route path="/admin/users" element={<Users />}/> */}
           <Route path="/admin" element={<Dashboard />}>
             <Route path="users/:id" element={<UserProfile />} />
+            <Route path="orders/:id" element={<OrderProfile />} />
             <Route path="products" element={<Products />}>
               <Route index element={<ProductsList />} />
               <Route path="create-product" element={<CreateProduct />} />

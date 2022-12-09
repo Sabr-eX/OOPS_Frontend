@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import moment from "moment";
 
 export default function OrdersList() {
@@ -33,6 +34,7 @@ export default function OrdersList() {
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Status</th>
+            <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -59,11 +61,22 @@ export default function OrdersList() {
                     <Cancelled>CANCELLED</Cancelled>
                   )}
                 </td>
-                {/* <td>
-                <button type="button" class="btn btn-success btn-xsm me-2">
-                  Add
-                </button>
-              </td> */}
+                <td>
+                <Link to={`/admin/orders/${order.id}`} state={{ product: order}}>
+                  <button
+                      type="button"
+                      class="btn btn-success btn-xsm me-2"
+                      // onClick={() =>
+                      //   navigate("/admin/users/edit-user", {
+                      //     state: product,
+                      //   })
+                      // }
+                      onClick={()=> console.log("kush")}
+                    >
+                      Edit
+                    </button>
+                    </Link>
+                    </td>
               </tr>
             );
           })}
