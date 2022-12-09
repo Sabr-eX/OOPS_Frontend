@@ -9,6 +9,8 @@ export default function () {
   const navigate = useNavigate();
   let [error, setError] = useState(false);
   let [errorMessage, setErrorMessage] = useState("");
+  let [forgotpwd, setforgotpwd] = useState(false);
+  let [pwdmessage, setpwdmessage] = useState("");
   let [authMode, setAuthMode] = useState(true);
   let [email, setSignInEmail] = useState("");
   let [password, setSigninpwd] = useState("");
@@ -67,6 +69,68 @@ export default function () {
       setError(true);
       setErrorMessage("Incorrect Email or Password");
       // setErrorMessage(result);
+    }
+  }
+  async function sendpwdresetrequest(e) {
+    e.preventDefault();
+    let item = { email };
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/users/forgotPassword?email=" +
+        email,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        // body: JSON.stringify(item),
+      }
+    );
+
+    if (result.ok) {
+      result = await result.text();
+      setforgotpwd(true);
+      setpwdmessage("Mail Sent");
+
+      // localStorage.setItem("user-info", JSON.stringify(result));
+      // if (!result.role.localeCompare("CUSTOMER")) {
+      //   navigate("/CustomerHome");
+      // }
+    } else {
+      result = await result.text();
+      setforgotpwd(true);
+      setpwdmessage("User does not exist");
+    }
+  }
+  async function sendpwdresetrequest(e) {
+    e.preventDefault();
+    let item = { email };
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/users/forgotPassword?email=" +
+        email,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        // body: JSON.stringify(item),
+      }
+    );
+
+    if (result.ok) {
+      result = await result.text();
+      setforgotpwd(true);
+      setpwdmessage("Mail Sent");
+
+      // localStorage.setItem("user-info", JSON.stringify(result));
+      // if (!result.role.localeCompare("CUSTOMER")) {
+      //   navigate("/CustomerHome");
+      // }
+    } else {
+      result = await result.text();
+      setforgotpwd(true);
+      setpwdmessage("User does not exist");
     }
   }
 
@@ -136,9 +200,13 @@ export default function () {
           </div>
 
           <p className="text-center mt-2 text-white">
-            <label>Forgot</label> <a href="#">password?</a>
+            <label>Forgot</label>{" "}
+            <a href="#" onClick={sendpwdresetrequest}>
+              password?
+            </a>
           </p>
           {error && <h6>{errorMessage}</h6>}
+          {pwdmessage && <h6>{pwdmessage}</h6>}
         </div>
       </form>
     </div>

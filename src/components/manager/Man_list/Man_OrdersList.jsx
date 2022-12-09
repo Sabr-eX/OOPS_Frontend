@@ -6,11 +6,21 @@ import axios from "axios";
 export default function OrdersList() {
   const [orders, setOrders] = useState();
 
+  function compare(a, b) {
+    if (a.orderDate < b.orderDate) {
+      return 1;
+    }
+    if (a.orderDate > b.orderDate) {
+      return -1;
+    }
+  }
+
   useEffect(() => {
     const getOrders = async () => {
       await axios
         .get("https://gada-electronics.up.railway.app/orders/all")
         .then((res) => {
+          res.data.sort(compare);
           setOrders(res?.data);
         })
         .then((res) => console.log(res?.data));

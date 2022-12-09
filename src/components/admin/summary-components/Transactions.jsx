@@ -9,6 +9,15 @@ const Transactions = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  function compare(a, b) {
+    if (a.orderDate < b.orderDate) {
+      return 1;
+    }
+    if (a.orderDate > b.orderDate) {
+      return -1;
+    }
+  }
+
   console.log(orders);
 
   useEffect(() => {
@@ -18,7 +27,7 @@ const Transactions = () => {
         const res = await axios.get(
           `https://gada-electronics.up.railway.app/orders/all`
         );
-
+        res.data.sort(compare);
         setOrders(res.data);
         setIsLoading(false);
       } catch (err) {

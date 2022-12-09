@@ -9,6 +9,8 @@ export default function (props) {
   let [authMode, setAuthMode] = useState("signin");
   let [error, setError] = useState(false);
   let [errorMessage, setErrorMessage] = useState("");
+  let [forgotpwd, setforgotpwd] = useState(false);
+  let [pwdmessage, setpwdmessage] = useState("");
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin");
@@ -67,7 +69,37 @@ export default function (props) {
   //    .catch(error => {
   //      alert('service error')
   //    })
+  async function sendpwdresetrequest(e) {
+    e.preventDefault();
+    let item = { email };
+    let result = await fetch(
+      "https://gada-electronics.up.railway.app/users/forgotPassword?email=" +
+        email,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        // body: JSON.stringify(item),
+      }
+    );
 
+    if (result.ok) {
+      result = await result.text();
+      setforgotpwd(true);
+      setpwdmessage("Mail Sent");
+
+      // localStorage.setItem("user-info", JSON.stringify(result));
+      // if (!result.role.localeCompare("CUSTOMER")) {
+      //   navigate("/CustomerHome");
+      // }
+    } else {
+      result = await result.text();
+      setforgotpwd(true);
+      setpwdmessage("User does not exist");
+    }
+  }
   if (authMode === "signin") {
     return (
       <div className="Auth-form-container">
@@ -115,9 +147,13 @@ export default function (props) {
               </Link>
             </div>
             <p className="text-center mt-2 text-white">
-              <label>Forgot</label> <a href="#">password?</a>
+              <label>Forgot</label>{" "}
+              <a href="#" onClick={sendpwdresetrequest}>
+                password?
+              </a>
             </p>
             {error && <h6>{errorMessage}</h6>}
+            {pwdmessage && <h6>{pwdmessage}</h6>}
           </div>
         </form>
       </div>
