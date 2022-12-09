@@ -6,6 +6,10 @@ function WishlistList({ addToCart }) {
     localStorage.getItem("wishlist") || "[]"
   );
 
+function removeFromWish(){
+  
+}  
+
   const [WISHLIST, setWISHLIST] = useState(wishlistfromlocal);
   const [wishlistlength, setwishlistlength] = useState(WISHLIST.length);
 
@@ -71,9 +75,9 @@ function WishlistList({ addToCart }) {
                 </div>
 
                 <div className="col-1">
-                  <button className="btn btn-outline-danger cart_btn">
+                  {/* <button className="btn btn-outline-danger cart_btn" onClick={removeFromWish}>
                     Remove from Wishlist
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

@@ -80,9 +80,9 @@ function CartList() {
                   <span> Rs. {cartItem.price * cartItem.quantity} </span>
                 </div>
 
-                <div className="col-1">
+                {/* <div className="col-1">
                   <button className="btn btn-danger">Delete</button>
-                </div>
+                </div> */}
               </div>
             </div>
           );
