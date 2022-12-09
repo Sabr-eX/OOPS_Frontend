@@ -23,16 +23,16 @@ export default function Navbar({ count, handleShow, product, addToCart }) {
           </span>
         </Link>
         <div class="row">
-          <div class="col-11">
+          <div class="col-1">
             <input
               type="text"
               id="search"
-              className="form-control"
-              placeholder="e.g refrigirator"
+              className="form-control "
+              placeholder=""
             />
           </div>
           <div class="col-1">
-            <button id="searchbtn" className="btn btn-primary" type="button">
+            <button id="searchbtn" className="btn btn-primary d-none" type="button">
               Search
             </button>
           </div>

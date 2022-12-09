@@ -16,6 +16,15 @@ const Chart = () => {
   const [loading, setLoading] = useState(false);
   const [sales, setSales] = useState([]);
 
+  function compare(a, b) {
+    if (a.orderDate < b.orderDate) {
+      return 1;
+    }
+    if (a.orderDate > b.orderDate) {
+      return -1;
+    }
+  }
+
   //     function compare(a,b){
   //   if(a._id<b._id){
   //     return 1;
@@ -33,7 +42,7 @@ const Chart = () => {
         const res = await axios.get(
           `https://gada-electronics.up.railway.app/orders/all`
         );
-
+        res.data.sort(compare);
         const newData = res.data.map((item) => {
           var cost = [0, 0, 0, 0, 0, 0, 0];
           const d = new Date(item.orderDate);
