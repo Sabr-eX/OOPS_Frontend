@@ -17,7 +17,7 @@ function CartList() {
   }, [CART]);
 
   function deleteCart() {
-    setCART("[]");
+    setCART([]);
   }
 
   return (

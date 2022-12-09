@@ -55,9 +55,12 @@ export default function () {
     if (result.ok) {
       result = await result.json();
       setError(false);
-      localStorage.setItem("user-info", JSON.stringify(result));
       if (!result.role.localeCompare("CUSTOMER")) {
+        localStorage.setItem("user-info", JSON.stringify(result));
         navigate("/CustomerHome");
+      } else {
+        setError(true);
+        setErrorMessage("Incorrect Email or Password");
       }
     } else {
       result = await result.text();

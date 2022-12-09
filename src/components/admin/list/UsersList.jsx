@@ -63,6 +63,7 @@ export default function UsersList() {
             <tr style={{ height: "5px", fontSize: "20px", fontStyle: "BOLD" }}>
               <th scope="col">User ID</th>
               <th scope="col">User Name</th>
+              <th scope="col">User Email</th>
               <th scope="col">Phone No.</th>
               {/* <th scope="col">Price</th> */}
               {/* <th scope="col">Edit</th> */}
@@ -77,6 +78,7 @@ export default function UsersList() {
                 <tr style={{ height: "5px", fontSize: "17px" }}>
                   <td>{product.id}</td>
                   <td>{product.name}</td>
+                  <td>{product.email}</td>
                   {/* <ImageContainer>
  <img src={product?.image} alt=""/>
  </ImageContainer> */}
